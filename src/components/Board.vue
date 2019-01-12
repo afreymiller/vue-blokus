@@ -1,12 +1,12 @@
 <template>
   <div class="hello">
     <draggable
-      :list="list" 
+      :list="player1" 
       class="dragArea" 
       :options="{group:'people'}"
     >
       <div
-        v-for="element in list"
+        v-for="element in player1"
         :key="element.name"
       >
         {{element.name}}
@@ -14,12 +14,12 @@
     </draggable>
     <br>
     <draggable 
-      :list="list2"
+      :list="player2"
       class="dragArea"
       :options="{group:'people'}"
     >
       <div
-        v-for="element in list2"
+        v-for="element in player2"
         :key="element.name"
       >
         {{element.name}}
@@ -37,15 +37,15 @@ export default {
   },
   data () {
     return {
-      list: [
-        {name:"John"}, 
-        {name:"Joao"}, 
-        {name:"Jean"} 
+      player1: [
+        {name:"5-gram"}, 
+        {name:"4-gram"}, 
+        {name:"3-gram"} 
       ],
-      list2: [
-        {name: "Juan"}, 
-        {name: "Edgard"}, 
-        {name: "Johnson"}
+      player2: [
+        {name: "5-gram"}, 
+        {name: "4-gram"}, 
+        {name: "3-gram"}
       ]
     }
 	},
