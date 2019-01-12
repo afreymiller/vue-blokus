@@ -60,12 +60,12 @@ export default {
     msg: String
   },
   computed: mapState({
-    count: state => state.count
+    count: state => state.game.count
   }),
   methods:{
     ...mapMutations({
-      inc: 'increment', // map `this.add()` to `this.$store.commit('increment')`
-      dec: 'decrement'
+      inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
+      dec: 'game/decrement'
     }),
     add: function(){
       this.list.push({name:'Juan'});

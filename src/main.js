@@ -5,13 +5,20 @@ import App from './App.vue'
 Vue.config.productionTip = false
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
+const gameModule = {
   state: {
     count: 0
   },
   mutations: {
     increment: state => state.count++,
     decrement: state => state.count--
+  },
+  namespaced: true
+}
+
+const store = new Vuex.Store({
+  modules: {
+    game: gameModule
   }
 })
 
