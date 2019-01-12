@@ -25,11 +25,14 @@
         {{element.name}}
       </div>
     </draggable>
+    <h2>Count</h2>
+    {{count}}
   </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable'
+import { mapState } from 'vuex'
 export default {
   name: 'Board',
   components: {
@@ -52,6 +55,9 @@ export default {
   props: {
     msg: String
   },
+  computed: mapState({
+    count: state => state.count
+  }),
   methods:{
     add: function(){
       this.list.push({name:'Juan'});
