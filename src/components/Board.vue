@@ -26,13 +26,17 @@
       </div>
     </draggable>
     <h2>Count</h2>
+    <p>
+      <button @click="inc">+</button>
+      <button @click="dec">-</button>
+    </p>
     {{count}}
   </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'Board',
   components: {
@@ -59,6 +63,10 @@ export default {
     count: state => state.count
   }),
   methods:{
+    ...mapMutations({
+      inc: 'increment', // map `this.add()` to `this.$store.commit('increment')`
+      dec: 'decrement'
+    }),
     add: function(){
       this.list.push({name:'Juan'});
     },
