@@ -1,6 +1,31 @@
 <template>
   <div class="hello">
+    <draggable
+      v-model="list" 
+      class="dragArea" 
+      :options="{group:'people'}"
+    >
+      <div
+        v-for="element in list"
+        :key="element.name"
+      >
+        {{element.name}}
+      </div>
+    </draggable>
+    <br>
     <draggable 
+      v-model="list2"
+      class="dragArea"
+      :options="{group:'people'}"
+    >
+      <div
+        v-for="element in list2"
+        :key="element.name"
+      >
+        {{element.name}}
+      </div>
+    </draggable>
+    <!-- <draggable 
       :list="list">
       <div 
         v-for="element in list"
@@ -8,7 +33,7 @@
       >
         {{element.name}}
       </div>
-    </draggable>
+    </draggable> -->
   </div>
 </template>
 
@@ -25,6 +50,11 @@ export default {
         {name:"John"}, 
         {name:"Joao"}, 
         {name:"Jean"} 
+      ],
+      list2: [
+        {name: "Juan"}, 
+        {name: "Edgard"}, 
+        {name: "Johnson"}
       ]
     }
 	},
