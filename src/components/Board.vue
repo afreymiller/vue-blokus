@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <draggable
-      v-model="list" 
+      :list="list" 
       class="dragArea" 
       :options="{group:'people'}"
     >
@@ -14,7 +14,7 @@
     </draggable>
     <br>
     <draggable 
-      v-model="list2"
+      :list="list2"
       class="dragArea"
       :options="{group:'people'}"
     >
@@ -25,15 +25,6 @@
         {{element.name}}
       </div>
     </draggable>
-    <!-- <draggable 
-      :list="list">
-      <div 
-        v-for="element in list"
-        :key="element.name"
-      >
-        {{element.name}}
-      </div>
-    </draggable> -->
   </div>
 </template>
 
