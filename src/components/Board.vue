@@ -66,13 +66,7 @@ export default {
     ...mapMutations({
       inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
       dec: 'game/decrement'
-    }),
-    add: function(){
-      this.list.push({name:'Juan'});
-    },
-    replace: function(){
-      this.list=[{name:'Edgard'}]
-    }
+    })
 	}
 }
 </script>
