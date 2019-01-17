@@ -1,9 +1,20 @@
 <template>
   <div class="hello">
-    <div class="grid">
+    <div
+      class="grid"
+      @mouseover="hoverMe"
+    >
       <p>20x20 grid</p>
     </div>
-    <img alt="Vue logo" src="../assets/block1.png">
+    <img 
+      height="30px"
+      width="20px"
+      alt="block1" 
+      src="../assets/block1.png"
+      @mousedown="startDrag"
+      @mousemove="doDrag"
+    >
+    <p>Block</p>
     <draggable
       :list="player1" 
       class="dragArea" 
@@ -35,12 +46,18 @@
       <button @click="dec">-</button>
     </p>
     {{count}}
+    {{dragging}}
+    {{left}}
+    {{top}}
   </div>
 </template>
 
 <script>
+var $ = require('jquery')
+window.jQuery = $
 import draggable from 'vuedraggable'
 import { mapState, mapMutations } from 'vuex'
+
 export default {
   name: 'Board',
   components: {
@@ -48,6 +65,9 @@ export default {
   },
   data () {
     return {
+      left: 0,
+      top: 0,
+      dragging: false,
       player1: [
         {name:"5-gram"}, 
         {name:"4-gram"}, 
@@ -70,8 +90,34 @@ export default {
     ...mapMutations({
       inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
       dec: 'game/decrement'
-    })
-	}
+    }),
+    startDrag() {
+      this.dragging = true;
+      this.x = this.y = 0;
+    },
+    hoverMe() {
+      alert('on the grid');
+    },
+    stopDrag() {
+      // this.dragging = false;
+      // this.x = this.y = 'no';
+    },
+    doDrag(event) {
+      if (this.dragging) {
+        this.x = event.clientX;
+        this.y = event.clientY;
+      }
+    },
+    calculatePosition: function(e) {
+      
+      let offset = $(".grid").offset();
+      this.left = e.pageX - offset.left;
+      this.top = e.pageY - offset.top;
+    }
+  },
+  mounted() {
+    window.addEventListener('mouseup', this.calculatePosition);
+  }
 }
 </script>
 
