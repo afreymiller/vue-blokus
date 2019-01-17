@@ -1,5 +1,9 @@
 <template>
   <div class="hello">
+    <div class="grid">
+      <p>20x20 grid</p>
+    </div>
+    <img alt="Vue logo" src="../assets/block1.png">
     <draggable
       :list="player1" 
       class="dragArea" 
@@ -73,6 +77,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.grid {
+  background-color: lightgray;
+  height: 300px;
+  width: 300px;
+}
 h3 {
   margin: 40px 0 0;
 }
