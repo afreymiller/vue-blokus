@@ -11,8 +11,6 @@
       width="20px"
       alt="block1" 
       src="../assets/block1.png"
-      @mousedown="startDrag"
-      @mousemove="doDrag"
     >
     <p>Block</p>
     <draggable
@@ -46,7 +44,6 @@
       <button @click="dec">-</button>
     </p>
     {{count}}
-    {{dragging}}
     {{left}}
     {{top}}
   </div>
@@ -67,7 +64,6 @@ export default {
     return {
       left: 0,
       top: 0,
-      dragging: false,
       player1: [
         {name:"5-gram"}, 
         {name:"4-gram"}, 
@@ -92,21 +88,14 @@ export default {
       dec: 'game/decrement'
     }),
     startDrag() {
-      this.dragging = true;
-      this.x = this.y = 0;
+
     },
     hoverMe() {
-      alert('on the grid');
+      console.log('on the grid');
     },
     stopDrag() {
       // this.dragging = false;
       // this.x = this.y = 'no';
-    },
-    doDrag(event) {
-      if (this.dragging) {
-        this.x = event.clientX;
-        this.y = event.clientY;
-      }
     },
     calculatePosition: function(e) {
       
@@ -116,7 +105,7 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener('mouseup', this.calculatePosition);
+    window.addEventListener('mousemove', this.calculatePosition);
   }
 }
 </script>
