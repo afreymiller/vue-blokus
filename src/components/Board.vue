@@ -99,28 +99,32 @@ export default {
       var bw = 400;
       var bh = 400;
       //padding around grid
-      var p = 11;
       let x;
 
-      var cw = bw + (p*2) + 1;
-      var ch = bh + (p*2) + 1;
+      var cw = bw + 1;
+      var ch = bh + 1;
 
       let canvas = $('<canvas/>').attr({width: cw, height: ch}).prependTo('body');
+
+      
       
       let ctx = canvas.get(0).getContext("2d");
       for (x = 0; x <= bw; x += 20) {
-        ctx.moveTo(0.5 + x + p, p);
-        ctx.lineTo(0.5 + x + p, bh + p);
+        ctx.moveTo(0.5 + x, 0);
+        ctx.lineTo(0.5 + x, bh);
     }
 
 
     for (x = 0; x <= bh; x += 20) {
-        ctx.moveTo(p, 0.5 + x + p);
-        ctx.lineTo(bw + p, 0.5 + x + p);
+        ctx.moveTo(0, 0.5 + x);
+        ctx.lineTo(bw, 0.5 + x);
     }
 
     ctx.strokeStyle = "black";
     ctx.stroke();
+
+    ctx.fillStyle = 'green';
+    ctx.fillRect(0, 0, 20, 20);
     }
   },
   mounted() {
