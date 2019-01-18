@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
     <img 
-      height="30px"
-      width="20px"
+      height="95px"
+      width="60px"
       alt="block1" 
       src="../assets/block1.png"
     >
@@ -84,9 +84,6 @@ export default {
     startDrag() {
 
     },
-    hoverMe() {
-      console.log('on the grid');
-    },
     stopDrag() {
       // this.dragging = false;
       // this.x = this.y = 'no';
@@ -111,13 +108,13 @@ export default {
       let canvas = $('<canvas/>').attr({width: cw, height: ch}).prependTo('body');
       
       let ctx = canvas.get(0).getContext("2d");
-      for (x = 0; x <= bw; x += 40) {
+      for (x = 0; x <= bw; x += 20) {
         ctx.moveTo(0.5 + x + p, p);
         ctx.lineTo(0.5 + x + p, bh + p);
     }
 
 
-    for (x = 0; x <= bh; x += 40) {
+    for (x = 0; x <= bh; x += 20) {
         ctx.moveTo(p, 0.5 + x + p);
         ctx.lineTo(bw + p, 0.5 + x + p);
     }
