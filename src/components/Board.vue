@@ -81,15 +81,7 @@ export default {
       inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
       dec: 'game/decrement'
     }),
-    startDrag() {
-
-    },
-    stopDrag() {
-      // this.dragging = false;
-      // this.x = this.y = 'no';
-    },
     calculatePosition: function(e) {
-      
       let offset = $("canvas").offset();
       this.left = e.pageX - offset.left;
       this.top = e.pageY - offset.top;
@@ -101,34 +93,33 @@ export default {
       //padding around grid
       let x;
 
-      var cw = bw + 1;
-      var ch = bh + 1;
+      let canvas = $('<canvas/>').attr({width: bw + 1, height: bh + 1}).prependTo('body');
 
-      let canvas = $('<canvas/>').attr({width: cw, height: ch}).prependTo('body');
-
-      
-      
       let ctx = canvas.get(0).getContext("2d");
       for (x = 0; x <= bw; x += 20) {
         ctx.moveTo(0.5 + x, 0);
         ctx.lineTo(0.5 + x, bh);
-    }
+      }
 
+      for (x = 0; x <= bh; x += 20) {
+          ctx.moveTo(0, 0.5 + x);
+          ctx.lineTo(bw, 0.5 + x);
+      }
 
-    for (x = 0; x <= bh; x += 20) {
-        ctx.moveTo(0, 0.5 + x);
-        ctx.lineTo(bw, 0.5 + x);
-    }
+      ctx.strokeStyle = "black";
+      ctx.stroke();
 
-    ctx.strokeStyle = "black";
-    ctx.stroke();
-
-    ctx.fillStyle = 'green';
-    ctx.fillRect(0, 0, 20, 20);
+      ctx.fillStyle = '#DCDCDC';
+      ctx.fillRect(1, 1, 19, 19);
+      ctx.fillRect(21, 1, 19, 19);
+      ctx.fillRect(1, 21, 19, 19);
+      ctx.fillRect(1, 41, 19, 19);
+      ctx.fillRect(1, 61, 19, 19);
     }
   },
   mounted() {
     window.addEventListener('mousemove', this.calculatePosition);
+    window.addEventListener('mouseup', this.calculatePosition);
     this.updateCanvas();
   }
 }
