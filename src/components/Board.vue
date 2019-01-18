@@ -1,11 +1,5 @@
 <template>
   <div class="hello">
-    <div
-      class="grid"
-      @mouseover="hoverMe"
-    >
-      <p>20x20 grid</p>
-    </div>
     <img 
       height="30px"
       width="20px"
@@ -99,23 +93,56 @@ export default {
     },
     calculatePosition: function(e) {
       
-      let offset = $(".grid").offset();
+      let offset = $("canvas").offset();
       this.left = e.pageX - offset.left;
       this.top = e.pageY - offset.top;
+    },
+    updateCanvas: function() {
+      //let canvas = document.getElementById('grid')
+      var bw = 400;
+      var bh = 400;
+      //padding around grid
+      var p = 11;
+      let x;
+
+      var cw = bw + (p*2) + 1;
+      var ch = bh + (p*2) + 1;
+
+      let canvas = $('<canvas/>').attr({width: cw, height: ch}).prependTo('body');
+      
+      let ctx = canvas.get(0).getContext("2d");
+      for (x = 0; x <= bw; x += 40) {
+        ctx.moveTo(0.5 + x + p, p);
+        ctx.lineTo(0.5 + x + p, bh + p);
+    }
+
+
+    for (x = 0; x <= bh; x += 40) {
+        ctx.moveTo(p, 0.5 + x + p);
+        ctx.lineTo(bw + p, 0.5 + x + p);
+    }
+
+    ctx.strokeStyle = "black";
+    ctx.stroke();
     }
   },
   mounted() {
     window.addEventListener('mousemove', this.calculatePosition);
+    this.updateCanvas();
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.grid {
+#grid {
   background-color: lightgray;
   height: 300px;
   width: 300px;
+}
+canvas {
+    background: #fff;
+    margin: 20px;
 }
 h3 {
   margin: 40px 0 0;
