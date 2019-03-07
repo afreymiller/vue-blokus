@@ -32,14 +32,15 @@
         {{element.name}}
       </div>
     </draggable>
-    <h2>Count</h2>
-    <p>
+    <polyomino/>
+    <!-- <h2>Count</h2> -->
+    <!-- <p>
       <button @click="inc">+</button>
       <button @click="dec">-</button>
-    </p>
-    {{count}}
+    </p> -->
+    <!-- {{count}}
     {{left}}
-    {{top}}
+    {{top}} -->
   </div>
 </template>
 
@@ -48,11 +49,13 @@ var $ = require('jquery')
 window.jQuery = $
 import draggable from 'vuedraggable'
 import { mapState, mapMutations } from 'vuex'
+import Polyomino from './Polyomino.vue'
 
 export default {
   name: 'Board',
   components: {
-    draggable
+    draggable,
+    Polyomino
   },
   data () {
     return {
