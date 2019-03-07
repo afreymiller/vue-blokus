@@ -32,7 +32,9 @@
         {{element.name}}
       </div>
     </draggable>
-    <polyomino/>
+    <polyomino
+      :config="rowConfig" 
+    />
     <!-- <h2>Count</h2> -->
     <!-- <p>
       <button @click="inc">+</button>
@@ -70,7 +72,15 @@ export default {
         {name: "5-gram"}, 
         {name: "4-gram"}, 
         {name: "3-gram"}
-      ]
+      ],
+      rowConfig: {
+        rows: [
+          { id: 1 },
+          { id: 2 },
+          { id: 3 },
+          { id: 4 }
+        ]
+      }
     }
 	},
   props: {
