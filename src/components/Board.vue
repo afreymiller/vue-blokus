@@ -34,42 +34,28 @@
     </draggable>
     <div class="polyomino-grid">
       <div class="row">
-        <div class="col-sm-3">.col-sm-3</div>
-        <div class="col-sm-3">.col-sm-3</div>
-        <div class="col-sm-3">.col-sm-3</div>
-        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
       </div>
       <div class="row">
-        <div class="col-sm-3">.col-sm-3</div>
-        <div class="col-sm-3">.col-sm-3</div>
-        <div class="col-sm-3">.col-sm-3</div>
-        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
       </div>
       <div class="row">
-        <div class="col-sm-3">.col-sm-3</div>
-        <div class="col-sm-3">.col-sm-3</div>
-        <div class="col-sm-3">.col-sm-3</div>
-        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
       </div>
-    </div>
-
-    <div class="jumbotron">
       <div class="row">
-        <div class="col-sm-4">
-          <h3>Column 1</h3>
-          <p>Lorem ipsum dolor..</p>
-          <p>Ut enim ad..</p>
-        </div>
-        <div class="col-sm-4">
-          <h3>Column 2</h3>
-          <p>Lorem ipsum dolor..</p>
-          <p>Ut enim ad..</p>
-        </div>
-        <div class="col-sm-4">
-          <h3>Column 3</h3> 
-          <p>Lorem ipsum dolor..</p>
-          <p>Ut enim ad..</p>
-        </div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
       </div>
     </div>
     <!-- <h2>Count</h2> -->
@@ -193,7 +179,11 @@ a {
 
 .polyomino-grid {
   background-color: lightgray;
-  width: 100%;
+  width: 75%;
   height: 200px;
+}
+
+.polyomino-tile {
+  border: 2px solid black;
 }
 </style>
