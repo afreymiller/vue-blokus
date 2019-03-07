@@ -32,32 +32,7 @@
         {{element.name}}
       </div>
     </draggable>
-    <div class="polyomino-grid">
-      <div class="row">
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-        <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-      </div>
-    </div>
+    <polyomino/>
     <!-- <h2>Count</h2> -->
     <!-- <p>
       <button @click="inc">+</button>
@@ -74,11 +49,13 @@ var $ = require('jquery')
 window.jQuery = $
 import draggable from 'vuedraggable'
 import { mapState, mapMutations } from 'vuex'
+import Polyomino from './Polyomino.vue'
 
 export default {
   name: 'Board',
   components: {
-    draggable
+    draggable,
+    Polyomino
   },
   data () {
     return {
@@ -175,15 +152,5 @@ li {
 }
 a {
   color: #42b983;
-}
-
-.polyomino-grid {
-  background-color: lightgray;
-  width: 75%;
-  height: 200px;
-}
-
-.polyomino-tile {
-  border: 2px solid black;
 }
 </style>
