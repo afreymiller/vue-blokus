@@ -32,14 +32,54 @@
         {{element.name}}
       </div>
     </draggable>
-    <h2>Count</h2>
-    <p>
+    <div class="polyomino-grid">
+      <div class="row">
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3>Column 1</h3>
+          <p>Lorem ipsum dolor..</p>
+          <p>Ut enim ad..</p>
+        </div>
+        <div class="col-sm-4">
+          <h3>Column 2</h3>
+          <p>Lorem ipsum dolor..</p>
+          <p>Ut enim ad..</p>
+        </div>
+        <div class="col-sm-4">
+          <h3>Column 3</h3> 
+          <p>Lorem ipsum dolor..</p>
+          <p>Ut enim ad..</p>
+        </div>
+      </div>
+    </div>
+    <!-- <h2>Count</h2> -->
+    <!-- <p>
       <button @click="inc">+</button>
       <button @click="dec">-</button>
-    </p>
-    {{count}}
+    </p> -->
+    <!-- {{count}}
     {{left}}
-    {{top}}
+    {{top}} -->
   </div>
 </template>
 
@@ -149,5 +189,11 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.polyomino-grid {
+  background-color: lightgray;
+  width: 100%;
+  height: 200px;
 }
 </style>
