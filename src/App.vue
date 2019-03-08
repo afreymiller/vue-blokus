@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!--Leave as example for tying in images-->
     <game/>
   </div>
 </template>
