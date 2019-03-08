@@ -1,20 +1,20 @@
 <template>
   <div class="polyomino-grid">
-    <div class="row"
+    <polyomino-row
       v-for="row in config.rows"
       v-bind:key="row.id"
-    >
-      <div class="col-sm-3 polyomino-tile polyomino-tile--filled">.col-sm-3</div>
-      <div class="col-sm-3 polyomino-tile polyomino-tile--filled">.col-sm-3</div>
-      <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-      <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-    </div>
+    />
   </div>
 </template>
 
 <script>
+import PolyominoRow from './PolyominoRow.vue'
+
 export default {
   name: 'Polyomino',
+  components: {
+    PolyominoRow
+  },
   props: {
     config: {
       type: Object,
@@ -29,13 +29,5 @@ export default {
     background-color: lightgray;
     width: 20%;
     height: 50px;
-  }
-
-  .polyomino-tile {
-    border: 2px solid black;
-  }
-
-  .polyomino-tile--filled {
-    background-color: blue;
   }
 </style>
