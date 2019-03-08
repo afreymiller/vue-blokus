@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <!--Leave as example for tying in images-->
-    <board 
-      :msg="msg"
-    />
+    <board/>
   </div>
 </template>
 
@@ -14,11 +12,6 @@ export default {
   name: 'app',
   components: {
     Board
-  },
-  data() {
-    return {
-      msg: "Welcome to Your Vue.js App"
-    }
   }
 }
 </script>
