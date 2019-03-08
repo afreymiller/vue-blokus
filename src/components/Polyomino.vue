@@ -28,6 +28,7 @@ export default {
 <style scoped>
   .polyomino-grid {
     width: 20%;
-    height: 50px;
+    margin-bottom: 40px;
+    height: 70px;
   }
 </style>
