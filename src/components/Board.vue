@@ -6,7 +6,8 @@
       alt="block1" 
       src="../assets/logo.png"
     > -->
-    <draggable
+    <canvas id="myCanvas"></canvas>
+    <!-- <draggable
       :list="player1" 
       class="dragArea" 
       :options="{group:'people'}"
@@ -30,7 +31,7 @@
       >
         {{element.name}}
       </div>
-    </draggable>
+    </draggable> -->
     <polyomino
       :config="rowConfig" 
     />
@@ -39,23 +40,22 @@
       <button @click="inc">+</button>
       <button @click="dec">-</button>
     </p> -->
-    <!-- {{count}}
+    <!-- {{count}} -->
     {{left}}
-    {{top}} -->
+    {{top}}
   </div>
 </template>
 
 <script>
 var $ = require('jquery')
 window.jQuery = $
-import draggable from 'vuedraggable'
+// import draggable from 'vuedraggable'
 import { mapState, mapMutations } from 'vuex'
 import Polyomino from './Polyomino.vue'
 
 export default {
   name: 'Board',
   components: {
-    draggable,
     Polyomino
   },
   data () {
@@ -105,9 +105,13 @@ export default {
       //padding around grid
       let x;
 
-      let canvas = $('<canvas/>').attr({width: bw + 1, height: bh + 1}).prependTo('body');
+      $("#myCanvas").attr({width: bw + 1, height: bh + 1});
 
-      let ctx = canvas.get(0).getContext("2d");
+      let canvas = document.getElementById("myCanvas");
+
+      // let canvas = $('<canvas/>').attr({width: bw + 1, height: bh + 1}).prependTo('body');
+
+      let ctx = canvas.getContext("2d");
       for (x = 0; x <= bw; x += 20) {
         ctx.moveTo(0.5 + x, 0);
         ctx.lineTo(0.5 + x, bh);
