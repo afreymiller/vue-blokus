@@ -4,18 +4,8 @@
 </template>
 
 <script>
-var $ = require('jquery')
-window.jQuery = $
-
 export default {
-  name: 'Board',
-  props: {
-    filled: {
-      type: Boolean,
-      default: false
-    }
-  },
-  methods: {}
+  name: 'Board'
 }
 </script>
 

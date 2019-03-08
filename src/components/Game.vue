@@ -32,6 +32,7 @@
         {{element.name}}
       </div>
     </draggable> -->
+    <bag/>
     <polyomino
       :config="rowConfig" 
     />
@@ -53,12 +54,14 @@ window.jQuery = $
 import { mapState, mapMutations } from 'vuex'
 import Polyomino from './Polyomino.vue'
 import Board from './Board.vue'
+import Bag from './Bag.vue'
 
 export default {
   name: 'Game',
   components: {
     Polyomino,
-    Board
+    Board,
+    Bag
   },
   data () {
     return {
