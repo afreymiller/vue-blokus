@@ -6,7 +6,7 @@
       alt="block1" 
       src="../assets/logo.png"
     > -->
-    <canvas id="board"></canvas>
+    <tile-board/>
     <!-- <draggable
       :list="player1" 
       class="dragArea" 
@@ -52,11 +52,13 @@ window.jQuery = $
 // import draggable from 'vuedraggable'
 import { mapState, mapMutations } from 'vuex'
 import Polyomino from './Polyomino.vue'
+import TileBoard from './TileBoard.vue'
 
 export default {
   name: 'Board',
   components: {
-    Polyomino
+    Polyomino,
+    TileBoard
   },
   data () {
     return {
