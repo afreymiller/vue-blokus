@@ -6,7 +6,7 @@
       alt="block1" 
       src="../assets/logo.png"
     > -->
-    <canvas id="myCanvas"></canvas>
+    <canvas id="board"></canvas>
     <!-- <draggable
       :list="player1" 
       class="dragArea" 
@@ -99,9 +99,9 @@ export default {
       //padding around grid
       let x;
 
-      $("#myCanvas").attr({width: bw + 1, height: bh + 1});
+      $("#board").attr({width: bw + 1, height: bh + 1});
 
-      let canvas = document.getElementById("myCanvas");
+      let canvas = document.getElementById("board");
 
       // let canvas = $('<canvas/>').attr({width: bw + 1, height: bh + 1}).prependTo('body');
 
