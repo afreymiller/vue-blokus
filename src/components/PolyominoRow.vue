@@ -27,7 +27,7 @@ export default {
 
 <style scoped>
   .polyomino-tile {
-    border: 2px solid black;
+    border: 1px solid black;
   }
 
   .polyomino-tile--filled {
