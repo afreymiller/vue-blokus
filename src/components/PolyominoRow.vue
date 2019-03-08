@@ -4,9 +4,7 @@
       v-for="(cell, index) in row"
       v-bind:key="index"
       :filled="cell === 1"
-    >
-      {{ row }}
-    </polyomino-cell>
+    />
   </div>
 </template>
 

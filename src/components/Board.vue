@@ -1,13 +1,11 @@
 <template>
-  <div class="hello">
-    <img 
+  <div>
+    <!-- <img 
       height="95px"
       width="60px"
       alt="block1" 
-      src="../assets/block1.png"
-    >
-    {{ msg }}
-    <p>Block</p>
+      src="../assets/logo.png"
+    > -->
     <draggable
       :list="player1" 
       class="dragArea" 
@@ -74,14 +72,11 @@ export default {
         {name: "4-gram"}, 
         {name: "3-gram"}
       ],
-      rowConfig: {
-        rows: [
-          [0, 0, 0, 1],
-          [0, 0, 0, 1],
-          [0, 0, 0, 1],
-          [0, 0, 1, 1]
-        ]
-      }
+      rowConfig: [
+        [0, 1, 0],
+        [1, 1, 1],
+        [0, 1, 0]
+      ]
     }
 	},
   props: {

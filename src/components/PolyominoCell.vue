@@ -3,7 +3,6 @@
     class="col-sm-3 polyomino-tile"
     v-bind:class="{ 'polyomino-tile--filled': filled }"
   >
-    {{filled}}
   </div>
 </template>
 
@@ -22,6 +21,8 @@ export default {
 <style scoped>
   .polyomino-tile {
     border: 2px solid black;
+    min-width: 30px;
+    min-height: 30px;
   }
 
   .polyomino-tile--filled {
