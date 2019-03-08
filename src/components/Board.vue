@@ -6,6 +6,7 @@
       alt="block1" 
       src="../assets/block1.png"
     >
+    {{ msg }}
     <p>Block</p>
     <draggable
       :list="player1" 
@@ -32,7 +33,9 @@
         {{element.name}}
       </div>
     </draggable>
-    <polyomino/>
+    <polyomino
+      :config="rowConfig" 
+    />
     <!-- <h2>Count</h2> -->
     <!-- <p>
       <button @click="inc">+</button>
@@ -70,11 +73,22 @@ export default {
         {name: "5-gram"}, 
         {name: "4-gram"}, 
         {name: "3-gram"}
-      ]
+      ],
+      rowConfig: {
+        rows: [
+          [0, 0, 0, 1],
+          [0, 0, 0, 1],
+          [0, 0, 0, 1],
+          [0, 0, 1, 1]
+        ]
+      }
     }
 	},
   props: {
-    msg: String
+    msg: {
+      type: String,
+      default: ''
+    }
   },
   computed: mapState({
     count: state => state.game.count
