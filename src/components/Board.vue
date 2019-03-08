@@ -85,7 +85,10 @@ export default {
     }
 	},
   props: {
-    msg: String
+    msg: {
+      type: String,
+      default: ''
+    }
   },
   computed: mapState({
     count: state => state.game.count
