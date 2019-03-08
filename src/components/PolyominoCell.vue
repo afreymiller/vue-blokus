@@ -1,5 +1,10 @@
 <template>
-  <div class="col-sm-3 polyomino-tile polyomino-tile--filled">{{filled}}</div>
+  <div 
+    class="col-sm-3 polyomino-tile"
+    v-bind:class="{ 'polyomino-tile--filled': filled }"
+  >
+    {{filled}}
+  </div>
 </template>
 
 <script>
