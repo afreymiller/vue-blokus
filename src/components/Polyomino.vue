@@ -1,12 +1,10 @@
 <template>
   <div class="polyomino-grid">
     <polyomino-row
-      v-for="(row, index) in config.rows"
+      v-for="(row, index) in config"
       v-bind:key="index"
       :row="row"
-    >
-      {{config.rows}}
-    </polyomino-row>
+    />
   </div>
 </template>
 
@@ -20,8 +18,8 @@ export default {
   },
   props: {
     config: {
-      type: Object,
-      default: () => {}
+      type: Array,
+      default: () => []
     }
   }
 }
@@ -29,7 +27,6 @@ export default {
 
 <style scoped>
   .polyomino-grid {
-    background-color: lightgray;
     width: 20%;
     height: 50px;
   }
