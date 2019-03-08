@@ -1,9 +1,12 @@
 <template>
   <div class="polyomino-grid">
     <polyomino-row
-      v-for="row in config.rows"
-      v-bind:key="row.id"
-    />
+      v-for="(row, index) in config.rows"
+      v-bind:key="index"
+      :row="row"
+    >
+      {{config.rows}}
+    </polyomino-row>
   </div>
 </template>
 

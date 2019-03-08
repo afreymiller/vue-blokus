@@ -1,11 +1,31 @@
 <template>
   <div class="row">
-    <div class="col-sm-3 polyomino-tile polyomino-tile--filled">.col-sm-3</div>
-    <div class="col-sm-3 polyomino-tile polyomino-tile--filled">.col-sm-3</div>
-    <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
-    <div class="col-sm-3 polyomino-tile">.col-sm-3</div>
+    <polyomino-cell
+      v-for="(cell, index) in row"
+      v-bind:key="index"
+      :filled="cell === 1"
+    >
+      {{ row }}
+    </polyomino-cell>
   </div>
 </template>
+
+<script>
+import PolyominoCell from './PolyominoCell.vue'
+
+export default {
+  name: 'Polyomino',
+  components: {
+    PolyominoCell
+  },
+  props: {
+    row: {
+      type: Array,
+      default: () => []
+    }
+  }
+}
+</script>
 
 <style scoped>
   .polyomino-tile {

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <!--Leave as example for tying in images-->
-    <board msg="Welcome to Your Vue.js App"/>
+    <board 
+      msg="Welcome to Your Vue.js App"
+    />
   </div>
 </template>
 

@@ -6,6 +6,7 @@
       alt="block1" 
       src="../assets/block1.png"
     >
+    {{ msg }}
     <p>Block</p>
     <draggable
       :list="player1" 
@@ -75,10 +76,10 @@ export default {
       ],
       rowConfig: {
         rows: [
-          { id: 1 },
-          { id: 2 },
-          { id: 3 },
-          { id: 4 }
+          [0, 0, 0, 1],
+          [0, 0, 0, 1],
+          [0, 0, 0, 1],
+          [0, 0, 1, 1]
         ]
       }
     }
