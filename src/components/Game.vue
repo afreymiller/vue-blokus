@@ -33,9 +33,7 @@
       </div>
     </draggable> -->
     <bag/>
-    <polyomino
-      :config="rowConfig" 
-    />
+    
     <!-- <h2>Count</h2> -->
     <!-- <p>
       <button @click="inc">+</button>
@@ -52,14 +50,12 @@ var $ = require('jquery')
 window.jQuery = $
 // import draggable from 'vuedraggable'
 import { mapState, mapMutations } from 'vuex'
-import Polyomino from './Polyomino.vue'
 import Board from './Board.vue'
 import Bag from './Bag.vue'
 
 export default {
   name: 'Game',
   components: {
-    Polyomino,
     Board,
     Bag
   },
@@ -76,11 +72,6 @@ export default {
         {name: "5-gram"}, 
         {name: "4-gram"}, 
         {name: "3-gram"}
-      ],
-      rowConfig: [
-        [0, 1, 0],
-        [1, 1, 1],
-        [0, 1, 0]
       ]
     }
 	},
