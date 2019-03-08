@@ -39,9 +39,9 @@
       <button @click="inc">+</button>
       <button @click="dec">-</button>
     </p> -->
-    <!-- {{count}}
+    <!-- {{count}} -->
     {{left}}
-    {{top}} -->
+    {{top}}
   </div>
 </template>
 
