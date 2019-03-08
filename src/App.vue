@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <!--Leave as example for tying in images-->
-    <board/>
+    <game/>
   </div>
 </template>
 
 <script>
-import Board from './components/Board.vue'
+import Game from './components/Game.vue'
 
 export default {
   name: 'app',
   components: {
-    Board
+    Game
   }
 }
 </script>
