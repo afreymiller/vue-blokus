@@ -1,6 +1,6 @@
 <template>
   <div 
-    class="col-2 polyomino-tile"
+    class="polyomino-tile"
     v-bind:class="{ 'polyomino-tile--filled': filled }"
   >
   </div>
@@ -20,10 +20,14 @@ export default {
 
 <style scoped>
   .polyomino-tile {
-    border: 2px solid black;
-    /* min-width: 5px;
-    max-width: 5px; */
-    min-height: 15px;
+    background-color: #D3D3D3;
+    color: #fff;
+    border: 1px solid black;
+    padding: 0px;
+    min-height: 10px;
+    max-height: 10px;
+    max-width: 10px;
+    font-size: 20%;
   }
 
   .polyomino-tile--filled {

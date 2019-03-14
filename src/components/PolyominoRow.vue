@@ -1,6 +1,6 @@
 <template>
-  <div class="row">
-    <polyomino-cell
+  <div>
+  <polyomino-cell
       v-for="(cell, index) in row"
       v-bind:key="index"
       :filled="cell === 1"

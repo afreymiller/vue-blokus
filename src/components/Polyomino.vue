@@ -1,5 +1,5 @@
 <template>
-  <div class="polyomino-grid">
+  <div class="wrapper">
     <polyomino-row
       v-for="(row, index) in config"
       v-bind:key="index"
@@ -26,10 +26,13 @@ export default {
 </script>
 
 <style scoped>
-  .polyomino-grid {
-    width: 140px;
-    margin: 0 auto;
-    margin-bottom: 60px;
-    height: 120px;
+  .wrapper {
+    max-height: 30px;
+        display: grid;
+        grid-template-columns: 10px 10px 10px 10px 10px;
+        grid-gap: 0px;
+        background-color: #fff;
+        color: #444;
+        margin-bottom: 60px;
   }
 </style>
