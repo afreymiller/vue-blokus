@@ -1,20 +1,20 @@
 <template>
   <div class="wrapper">
-    <polyomino-cell
-      v-for="row in config"
-      v-bind:key="row"
-      :filled="row === 1"
+    <polyomino-row
+      v-for="(row, index) in config"
+      v-bind:key="index"
+      :row="row"
     />
   </div>
 </template>
 
 <script>
-import PolyominoCell from './PolyominoCell.vue'
+import PolyominoRow from './PolyominoRow.vue'
 
 export default {
   name: 'Polyomino',
   components: {
-    PolyominoCell
+    PolyominoRow
   },
   props: {
     config: {
