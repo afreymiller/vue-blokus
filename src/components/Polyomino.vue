@@ -1,20 +1,20 @@
 <template>
-  <div class="polyomino-grid">
-    <polyomino-row
-      v-for="(row, index) in config"
-      v-bind:key="index"
-      :row="row"
+  <div class="wrapper">
+    <polyomino-cell
+      v-for="row in config"
+      v-bind:key="row"
+      :filled="row === 1"
     />
   </div>
 </template>
 
 <script>
-import PolyominoRow from './PolyominoRow.vue'
+import PolyominoCell from './PolyominoCell.vue'
 
 export default {
   name: 'Polyomino',
   components: {
-    PolyominoRow
+    PolyominoCell
   },
   props: {
     config: {
@@ -26,10 +26,13 @@ export default {
 </script>
 
 <style scoped>
-  .polyomino-grid {
-    width: 140px;
-    margin: 0 auto;
-    margin-bottom: 60px;
-    height: 120px;
+  .wrapper {
+    max-height: 30px;
+        display: grid;
+        grid-template-columns: 10px 10px 10px 10px 10px;
+        grid-gap: 0px;
+        background-color: #fff;
+        color: #444;
+        margin-bottom: 60px;
   }
 </style>
