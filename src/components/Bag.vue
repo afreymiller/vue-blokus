@@ -1,10 +1,10 @@
 <template>
   <div>
     <polyomino
-      :config="rowConfig" 
+      :config="rowConfig1" 
     />
     <polyomino
-      :config="rowConfig" 
+      :config="rowConfig2" 
     />
   </div>
 </template>
@@ -19,11 +19,18 @@ export default {
   },
   data () {
     return {
-      rowConfig: [
+      rowConfig1: [
         [0, 0, 0, 0, 0],
         [0, 0, 0, 1, 0],
         [0, 1, 1, 1, 0],
         [0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ],
+      rowConfig2: [
+        [0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [0, 0, 1, 1, 0],
+        [0, 0, 1, 1, 0],
         [0, 0, 0, 0, 0]
       ]
     }
