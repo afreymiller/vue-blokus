@@ -87,6 +87,8 @@ export default {
       let offset = $("canvas").offset();
       this.left = e.pageX - offset.left;
       this.top = e.pageY - offset.top;
+
+      this.updateCanvas();
     },
     updateCanvas: function() {
       //let canvas = document.getElementById('grid')
@@ -121,6 +123,16 @@ export default {
       ctx.fillRect(1, 21, 19, 19);
       ctx.fillRect(1, 41, 19, 19);
       ctx.fillRect(1, 61, 19, 19);
+
+      let xBox = Math.floor(this.left/20);
+      let yBox = Math.floor(this.top/20);
+
+      // eslint-disable-next-line 
+      console.log(xBox);
+      // eslint-disable-next-line 
+      console.log(yBox);
+
+      ctx.fillRect((xBox * 20) + 1, (yBox * 20) + 1, 19, 19);
     }
   },
   mounted() {
