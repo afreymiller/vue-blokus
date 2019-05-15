@@ -10,8 +10,8 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.13",
-    "jquery": "^3.3.1",
-    "jquery-confirm": "^3.3.3",
+    "jquery": "^3.4.0",
+    "jquery-confirm": "^3.4.0",
     "vue": "^2.5.17",
     "vuedraggable": "^2.17.0",
     "vuex": "^3.0.1"
