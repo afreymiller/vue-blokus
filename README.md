@@ -16,6 +16,9 @@ as we see below.
 [ show some more tiles ]
 
 ## installation
+
+If you haven't already installed yarn, install it following the instructions [here](https://yarnpkg.com/en/docs/install#mac-stable).
+
 1. yarn install
 2. yarn serve
 3. Game will be running on localhost port 8080
