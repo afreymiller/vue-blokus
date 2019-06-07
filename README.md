@@ -15,7 +15,7 @@ as we see below.
 
 [ show some more tiles ]
 
-## getting up and running
+## installation
 1. yarn install
 2. yarn serve
 3. Game will be running on localhost port 8080
