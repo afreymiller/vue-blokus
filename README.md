@@ -21,12 +21,15 @@ as we see below.
 3. Game will be running on localhost port 8080
 
 ## tech
-- VueJS
-- Vuex
-- HTML Canvas
-- CSS
 - AWS Lambda
 - AWS Cognito
+- CSS
+- HTML Canvas
 - Mocha
+- Postman
+- Trello
+- VueJS
+- Vuex
+
 
 
