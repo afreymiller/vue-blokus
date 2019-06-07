@@ -15,18 +15,18 @@ as we see below.
 
 [ show some more tiles ]
 
-# running locally
+## getting up and running
 1. yarn install
 2. yarn serve
 3. Game will be running on localhost port 8080
 
-# tech
-VueJS
-Vuex
-HTML Canvas
-CSS
-AWS Lambda
-AWS Cognito
-Mocha
+## tech
+- VueJS
+- Vuex
+- HTML Canvas
+- CSS
+- AWS Lambda
+- AWS Cognito
+- Mocha
 
 
