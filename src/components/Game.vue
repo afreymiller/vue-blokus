@@ -50,6 +50,7 @@ var $ = require('jquery')
 window.jQuery = $
 // import draggable from 'vuedraggable'
 import { mapState, mapMutations } from 'vuex'
+// import CanvasHelper from '../helpers/canvasHelper.js'
 import Board from './Board.vue'
 import Bag from './Bag.vue'
 
