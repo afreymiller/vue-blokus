@@ -8,6 +8,8 @@ to as edges, and the meeting of these edges will be referred to as a vertex.
 
 [ show two tiles and draw lines that illustrate the vertex and edge ]
 
+![Alt text](/src/assets/logo.png "Optional Title")
+
 [ show some of the tiles here ]
 
 A player who places down a 5-tile polyomino receives 5 points, 4 points for a 4-tile polyomino, and so on. As
