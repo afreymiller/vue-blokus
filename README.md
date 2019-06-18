@@ -41,5 +41,8 @@ If you haven't already installed yarn, install it following the instructions [he
 - VueJS
 - Vuex
 
+## acknowledgements
+Blokus as a physical board game was created in #### by 
+
 
 
