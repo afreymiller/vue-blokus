@@ -3,6 +3,11 @@ Blokus is a four-player strategy game in which players place polyominoes on a 20
 adjacent at the corners but not at the edges of another polyomino of the same color. Each polyomino is 
 a permutation of laterally connected tiles which follow every possible configuration permutation from 1 to 5 tiles. 
 
+For ease of reference, we will define some terms. The line segments that define the border of a polyomino will be referred
+to as edges, and the meeting of these edges will be referred to as a vertex.
+
+[ show two tiles and draw lines that illustrate the vertex and edge ]
+
 [ show some of the tiles here ]
 
 A player who places down a 5-tile polyomino receives 5 points, 4 points for a 4-tile polyomino, and so on. As

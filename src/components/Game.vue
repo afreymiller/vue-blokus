@@ -127,11 +127,6 @@ export default {
       let xBox = Math.floor(this.left/20);
       let yBox = Math.floor(this.top/20);
 
-      // eslint-disable-next-line 
-      console.log(xBox);
-      // eslint-disable-next-line 
-      console.log(yBox);
-
       ctx.fillRect((xBox * 20) + 1, (yBox * 20) + 1, 19, 19);
       ctx.fillRect(((xBox - 1) * 20) + 1, ((yBox * 20) + 1), 19, 19);
       ctx.fillRect((xBox + 1) * 20, (yBox * 20) + 1, 19, 19);
