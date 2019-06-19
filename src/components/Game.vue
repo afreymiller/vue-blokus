@@ -111,28 +111,40 @@ export default {
       }
 
       for (x = 0; x <= bh; x += 20) {
-          ctx.moveTo(0, 0.5 + x);
-          ctx.lineTo(bw, 0.5 + x);
+        ctx.moveTo(0, 0.5 + x);
+        ctx.lineTo(bw, 0.5 + x);
       }
 
       ctx.strokeStyle = "black";
       ctx.stroke();
 
       ctx.fillStyle = '#DCDCDC';
-      ctx.fillRect(1, 1, 19, 19);
-      ctx.fillRect(21, 1, 19, 19);
-      ctx.fillRect(1, 21, 19, 19);
-      ctx.fillRect(1, 41, 19, 19);
-      ctx.fillRect(1, 61, 19, 19);
 
       let xBox = Math.floor(this.left/20);
       let yBox = Math.floor(this.top/20);
 
-      ctx.fillRect((xBox * 20) + 1, (yBox * 20) + 1, 19, 19);
-      ctx.fillRect(((xBox - 1) * 20) + 1, ((yBox * 20) + 1), 19, 19);
-      ctx.fillRect((xBox + 1) * 20, (yBox * 20) + 1, 19, 19);
-      ctx.fillRect((xBox * 20) + 1, ((yBox + 1) * 20) + 1, 19, 19);
-      ctx.fillRect((xBox * 20) + 1, ((yBox - 1) * 20) + 1, 19, 19);
+      let config = [
+        [0, 0, 0, 0, 0],
+        [0, 1, 1, 0, 0],
+        [0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ];
+
+      let i, j = 0;
+
+      /* TODO: Annotate this function */
+
+      for (i = 0; i < 5; i++) {
+        for (j = 0; j < 5; j++) {
+          if (config[i][j] === 1) {
+            let xDel = 2 - i;
+            let yDel = 2 - j;
+
+            ctx.fillRect(((xBox + xDel) * 20) + 1, ((yBox + yDel) * 20) + 1, 19, 19);
+          }
+        }
+      }
     }
   },
   mounted() {
