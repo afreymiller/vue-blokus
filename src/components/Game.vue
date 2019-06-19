@@ -130,7 +130,7 @@ export default {
 
       ctx.fillRect((xBox * 20) + 1, (yBox * 20) + 1, 19, 19);
       ctx.fillRect(((xBox - 1) * 20) + 1, ((yBox * 20) + 1), 19, 19);
-      ctx.fillRect((xBox + 1) * 20, (yBox * 20) + 1, 19, 19);
+      ctx.fillRect(((xBox + 1) * 20) + 1, (yBox * 20) + 1, 19, 19);
       ctx.fillRect((xBox * 20) + 1, ((yBox + 1) * 20) + 1, 19, 19);
       ctx.fillRect((xBox * 20) + 1, ((yBox - 1) * 20) + 1, 19, 19);
     }
