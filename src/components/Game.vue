@@ -111,8 +111,8 @@ export default {
       }
 
       for (x = 0; x <= bh; x += 20) {
-          ctx.moveTo(0, 0.5 + x);
-          ctx.lineTo(bw, 0.5 + x);
+        ctx.moveTo(0, 0.5 + x);
+        ctx.lineTo(bw, 0.5 + x);
       }
 
       ctx.strokeStyle = "black";
