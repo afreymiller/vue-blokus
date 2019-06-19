@@ -11,7 +11,7 @@ to as edges, and the meeting of these edges will be referred to as a vertex.
 Polyominoes of the same color are only allowed to touch at vertices on the board. For polyominoes of different colors,
 there is no such restriction.
 
-![Alt text](/src/assets/valid_1.png "Valid move")
+![Alt text](/src/assets/valid_2.png "Valid move")
 
 A player who places down a 5-tile polyomino receives 5 points, 4 points for a 4-tile polyomino, and so on. As
 the board fills up, the available spaces on the board becomes limited such that players will most likely not be able
