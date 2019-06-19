@@ -8,7 +8,7 @@ to as edges, and the meeting of these edges will be referred to as a vertex.
 
 [ show two tiles and draw lines that illustrate the vertex and edge ]
 
-![Alt text](/src/assets/logo.png "Optional Title")
+![Alt text](/src/assets/terms_diagram.png "Optional Title")
 
 [ show some of the tiles here ]
 
