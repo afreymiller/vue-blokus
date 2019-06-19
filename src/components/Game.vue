@@ -119,11 +119,6 @@ export default {
       ctx.stroke();
 
       ctx.fillStyle = '#DCDCDC';
-      ctx.fillRect(1, 1, 19, 19);
-      ctx.fillRect(21, 1, 19, 19);
-      ctx.fillRect(1, 21, 19, 19);
-      ctx.fillRect(1, 41, 19, 19);
-      ctx.fillRect(1, 61, 19, 19);
 
       let xBox = Math.floor(this.left/20);
       let yBox = Math.floor(this.top/20);
