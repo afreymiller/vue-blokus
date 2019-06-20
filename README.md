@@ -1,7 +1,5 @@
 # vue-blokus
-Blokus is a four-player strategy game in which player choose a color and place polyominoes on a 20x20 tile board which are allowed to be
-adjacent at the corners but not at the edges of another polyomino of the same color. Each polyomino is 
-a permutation of laterally connected tiles which follow every possible configuration permutation from 1 to 5 tiles. 
+Blokus is a four-player strategy game in which players choose a color and take turns placing polyominoes of said color on a 20x20 tile board. Each polyomino is a permutation of laterally connected tiles which follow every possible configuration permutation from 1 to 5 tiles. 
 
 For ease of reference, we will define some terms. The line segments that comprise the border of a polyomino will be referred
 to as edges, and the meeting of these edges will be referred to as a vertex.
@@ -15,7 +13,7 @@ there is no such restriction.
 
 A player who places down a 5-tile polyomino receives 5 points, 4 points for a 4-tile polyomino, and so on. As
 the board fills up, the available spaces on the board becomes limited such that players will most likely not be able
-to place all of their pieces. The winner of the game is s/he who receives the greatest number of points. 
+to place all of their pieces. The winner of the game is s/he who obtains the greatest number of points. 
 
 ## installation
 
