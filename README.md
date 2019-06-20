@@ -35,7 +35,11 @@ If you haven't already installed yarn, install it following the instructions [he
 - Vuex
 
 ## acknowledgements
-Blokus as a physical board game was created in #### by 
+Blokus as a physical board game was created in 2000 by Sekkoïa, a French game company. Before I release
+this to production I will ask them for permission to publish this. I intend for the game to be free-to-play
+for all users.
+
+I'd like to thank ekcrisp, ..., for their project mentorship.
 
 
 
