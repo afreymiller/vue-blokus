@@ -89,9 +89,9 @@ export default {
       this.left = e.pageX - offset.left;
       this.top = e.pageY - offset.top;
 
-      this.updateCanvas();
+      this.updateCanvas(this.left, this.top);
     },
-    updateCanvas: function() {
+    updateCanvas: function(xOffSet, yOffset) {
       //let canvas = document.getElementById('grid')
       var bw = 400;
       var bh = 400;
@@ -120,8 +120,8 @@ export default {
 
       ctx.fillStyle = '#DCDCDC';
 
-      let xBox = Math.floor(this.left/20);
-      let yBox = Math.floor(this.top/20);
+      let xBox = Math.floor(xOffSet/20);
+      let yBox = Math.floor(yOffset/20);
 
       let config = [
         [0, 0, 0, 0, 0],
