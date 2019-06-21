@@ -10,7 +10,7 @@ var $ = require('jquery')
 window.jQuery = $
 // import draggable from 'vuedraggable'
 import { mapState, mapMutations } from 'vuex'
-import api from '../helpers/canvasHelper.js'
+import canvasApi from '../helpers/canvasApi.js'
 import Board from './Board.vue'
 import Bag from './Bag.vue'
 
@@ -49,13 +49,13 @@ export default {
       this.left = e.pageX - offset.left;
       this.top = e.pageY - offset.top;
 
-      api.updateCanvas(this.left, this.top);
+      canvasApi.updateCanvas(this.left, this.top);
     }
   },
   mounted() {
     window.addEventListener('mousemove', this.calculatePosition);
     window.addEventListener('mouseup', this.calculatePosition);
-    api.updateCanvas(0, 0);
+    canvasApi.updateCanvas(0, 0);
   }
 }
 </script>
