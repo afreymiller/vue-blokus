@@ -1,7 +1,8 @@
 var $ = require('jquery');
 
-export default function(xOffSet, yOffset) {
-  //let canvas = document.getElementById('grid')
+const api = {
+  updateCanvas: (xOffSet, yOffset) => {
+    //let canvas = document.getElementById('grid')
   var bw = 400;
   var bh = 400;
   //padding around grid
@@ -52,4 +53,7 @@ export default function(xOffSet, yOffset) {
       }
     }
   }
+  }
 }
+
+export default api;
