@@ -33,6 +33,13 @@ export default {
         {name: "5-gram"}, 
         {name: "4-gram"}, 
         {name: "3-gram"}
+      ], 
+      config: [
+        [0, 0, 0, 0, 0],
+        [0, 1, 1, 0, 0],
+        [0, 1, 0, 0, 0],
+        [0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0]
       ]
     }
 	},
@@ -49,13 +56,13 @@ export default {
       this.left = e.pageX - offset.left;
       this.top = e.pageY - offset.top;
 
-      canvasApi.updateCanvas(this.left, this.top);
+      canvasApi.updateCanvas(this.config, this.left, this.top);
     }
   },
   mounted() {
     window.addEventListener('mousemove', this.calculatePosition);
     window.addEventListener('mouseup', this.calculatePosition);
-    canvasApi.updateCanvas(0, 0);
+    canvasApi.updateCanvas(this.config, 0, 0);
   }
 }
 </script>

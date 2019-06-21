@@ -27,39 +27,35 @@ const initGrid = () => {
   return ctx;
 }
 
+const renderShape = (shapeConfig, xOffSet, yOffset, ctx) => {
+  let xBox = Math.floor(xOffSet/20);
+  let yBox = Math.floor(yOffset/20);
+
+  let i, j = 0;
+
+  /* TODO: Annotate this function */
+
+  for (i = 0; i < 5; i++) {
+    for (j = 0; j < 5; j++) {
+      if (shapeConfig[i][j] === 1) {
+        let xDel = 2 - i;
+        let yDel = 2 - j;
+
+        ctx.fillRect(((xBox + xDel) * 20) + 1, ((yBox + yDel) * 20) + 1, 19, 19);
+      }
+    }
+  }
+}
+
 const canvasApi = {
-  updateCanvas: (xOffSet, yOffset) => {
+  updateCanvas: (shapeConfig, xOffSet, yOffset) => {
     //let canvas = document.getElementById('grid')
   
     let ctx = initGrid();
 
     ctx.fillStyle = '#DCDCDC';
 
-    let xBox = Math.floor(xOffSet/20);
-    let yBox = Math.floor(yOffset/20);
-
-    let config = [
-      [0, 0, 0, 0, 0],
-      [0, 1, 1, 0, 0],
-      [0, 1, 1, 1, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0]
-    ];
-
-    let i, j = 0;
-
-    /* TODO: Annotate this function */
-
-    for (i = 0; i < 5; i++) {
-      for (j = 0; j < 5; j++) {
-        if (config[i][j] === 1) {
-          let xDel = 2 - i;
-          let yDel = 2 - j;
-
-          ctx.fillRect(((xBox + xDel) * 20) + 1, ((yBox + yDel) * 20) + 1, 19, 19);
-        }
-      }
-    }
+    renderShape(shapeConfig, xOffSet, yOffset, ctx);
   }
 }
 
