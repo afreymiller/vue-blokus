@@ -27,7 +27,7 @@ const initGrid = () => {
   return ctx;
 }
 
-const api = {
+const canvasApi = {
   updateCanvas: (xOffSet, yOffset) => {
     //let canvas = document.getElementById('grid')
   
@@ -63,4 +63,4 @@ const api = {
   }
 }
 
-export default api;
+export default canvasApi;
