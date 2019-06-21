@@ -1,8 +1,6 @@
 var $ = require('jquery');
 
-const api = {
-  updateCanvas: (xOffSet, yOffset) => {
-    //let canvas = document.getElementById('grid')
+const initGrid = () => {
   var bw = 400;
   var bh = 400;
   //padding around grid
@@ -26,33 +24,42 @@ const api = {
   ctx.strokeStyle = "black";
   ctx.stroke();
 
-  ctx.fillStyle = '#DCDCDC';
+  return ctx;
+}
 
-  let xBox = Math.floor(xOffSet/20);
-  let yBox = Math.floor(yOffset/20);
+const api = {
+  updateCanvas: (xOffSet, yOffset) => {
+    //let canvas = document.getElementById('grid')
+  
+    let ctx = initGrid();
 
-  let config = [
-    [0, 0, 0, 0, 0],
-    [0, 1, 1, 0, 0],
-    [0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0]
-  ];
+    ctx.fillStyle = '#DCDCDC';
 
-  let i, j = 0;
+    let xBox = Math.floor(xOffSet/20);
+    let yBox = Math.floor(yOffset/20);
 
-  /* TODO: Annotate this function */
+    let config = [
+      [0, 0, 0, 0, 0],
+      [0, 1, 1, 0, 0],
+      [0, 1, 1, 1, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0]
+    ];
 
-  for (i = 0; i < 5; i++) {
-    for (j = 0; j < 5; j++) {
-      if (config[i][j] === 1) {
-        let xDel = 2 - i;
-        let yDel = 2 - j;
+    let i, j = 0;
 
-        ctx.fillRect(((xBox + xDel) * 20) + 1, ((yBox + yDel) * 20) + 1, 19, 19);
+    /* TODO: Annotate this function */
+
+    for (i = 0; i < 5; i++) {
+      for (j = 0; j < 5; j++) {
+        if (config[i][j] === 1) {
+          let xDel = 2 - i;
+          let yDel = 2 - j;
+
+          ctx.fillRect(((xBox + xDel) * 20) + 1, ((yBox + yDel) * 20) + 1, 19, 19);
+        }
       }
     }
-  }
   }
 }
 
