@@ -8,7 +8,6 @@
 <script>
 var $ = require('jquery')
 window.jQuery = $
-// import draggable from 'vuedraggable'
 import { mapState, mapMutations } from 'vuex'
 import canvasApi from '../helpers/canvasApi.js'
 import Board from './Board.vue'
@@ -24,16 +23,6 @@ export default {
     return {
       left: 0,
       top: 0,
-      player1: [
-        {name:"5-gram"}, 
-        {name:"4-gram"}, 
-        {name:"3-gram"} 
-      ],
-      player2: [
-        {name: "5-gram"}, 
-        {name: "4-gram"}, 
-        {name: "3-gram"}
-      ], 
       config: [
         [0, 0, 0, 0, 0],
         [0, 1, 1, 0, 0],
