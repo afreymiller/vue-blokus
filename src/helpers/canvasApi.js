@@ -66,6 +66,9 @@ const getTileCoordsToRender = (shapeConfig, xOffSet, yOffset) => {
 }
 
 const canvasApi = {
+  getCoords: (x) => {
+    return getCoord(x);
+  },
   updateCanvas: (shapeConfig, xOffSet, yOffset) => {
   
     let ctx = initGrid();
