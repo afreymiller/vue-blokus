@@ -29,13 +29,24 @@ const initGrid = () => {
   return ctx;
 }
 
-const renderShape = (shapeConfig, xOffSet, yOffset, ctx) => {
-  let xBox = Math.floor(xOffSet/constants.TILE_LENGTH);
-  let yBox = Math.floor(yOffset/constants.TILE_LENGTH);
+const getCoord = (offset) => {
+  return Math.floor(offset/constants.TILE_LENGTH);
+}
+
+const renderPolyominoTiles = (coords, ctx) => {
+  coords.map(c => ctx.fillRect(c.x, 
+    c.y, 
+    constants.TILE_LENGTH - 1, 
+    constants.TILE_LENGTH - 1)
+  )
+}
+
+const getTileCoordsToRender = (shapeConfig, xOffSet, yOffset) => {
+  let xBox = getCoord(xOffSet);
+  let yBox = getCoord(yOffset);
 
   let i, j = 0;
-
-  /* TODO: Annotate this function */
+  const coords = [];
 
   for (i = 0; i < 5; i++) {
     for (j = 0; j < 5; j++) {
@@ -43,24 +54,27 @@ const renderShape = (shapeConfig, xOffSet, yOffset, ctx) => {
         let xDel = 2 - i;
         let yDel = 2 - j;
 
-        ctx.fillRect(((xBox + xDel) * constants.TILE_LENGTH) + 1, 
-          ((yBox + yDel) * constants.TILE_LENGTH) + 1, 
-          constants.TILE_LENGTH - 1, 
-          constants.TILE_LENGTH - 1);
+        coords.push({
+          x: ((xBox + xDel) * constants.TILE_LENGTH) + 1,
+          y: ((yBox + yDel) * constants.TILE_LENGTH) + 1
+        });
       }
     }
   }
+
+  return coords;
 }
 
 const canvasApi = {
   updateCanvas: (shapeConfig, xOffSet, yOffset) => {
-    //let canvas = document.getElementById('grid')
   
     let ctx = initGrid();
 
     ctx.fillStyle = constants.LIGHT_GRAY;
 
-    renderShape(shapeConfig, xOffSet, yOffset, ctx);
+    const coords = getTileCoordsToRender(shapeConfig, xOffSet, yOffset);
+
+    renderPolyominoTiles(coords, ctx);
   }
 }
 
