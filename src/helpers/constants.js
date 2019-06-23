@@ -1,5 +1,6 @@
 const constants = {
   BLACK: "black",
+  BLUE: "blue",
   BOARD_SELECTOR: "board",
   CANVAS_HEIGHT: 400,
   CANVAS_WIDTH: 400,

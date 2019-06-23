@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 let assert = require('assert');
+// import canvasApi from '../src/helpers/canvasApi.js';
 
 describe('Array', function() {
   describe('indexOf()', function() {
