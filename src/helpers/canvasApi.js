@@ -66,11 +66,19 @@ const getTileCoordsToRender = (shapeConfig, xOffSet, yOffset) => {
   return coords;
 }
 
+const isValid = (gameConfig, tileConfig, xOffset, yOffset) => {
+  let xBox = getCoord(xOffset);
+  let yBox = getCoord(yOffset);
+
+  console.log(xBox);
+  console.log(yBox);
+}
+
 const canvasApi = {
   getCoords: (x) => {
     return getCoord(x);
   },
-  updateCanvas: (shapeConfig, gameConfig, xOffSet, yOffset) => {
+  updateCanvas: (tileConfig, gameConfig, xOffSet, yOffset) => {
   
     let ctx = initGrid();
 
@@ -92,9 +100,11 @@ const canvasApi = {
       }
     }
 
+    isValid(gameConfig, tileConfig, xOffSet, yOffset);
+
     renderPolyominoTiles(currState, ctx);
 
-    const coords = getTileCoordsToRender(shapeConfig, xOffSet, yOffset);
+    const coords = getTileCoordsToRender(tileConfig, xOffSet, yOffset);
 
     renderPolyominoTiles(coords, ctx);
   }
