@@ -3,9 +3,7 @@ var $ = require('jquery');
 
 import constants from './constants.js';
 
-const initGrid = (gameConfig) => {
-  console.log("gameConfig: ");
-  console.log(gameConfig);
+const initGrid = () => {
   var bw = constants.CANVAS_WIDTH;
   var bh = constants.CANVAS_HEIGHT;
   //padding around grid
@@ -82,6 +80,7 @@ const canvasApi = {
 
     const currState = [];
 
+    /* TODO: This should live in its own function */
     for (i = 0; i < 20; i++) {
       for (j = 0; j < 20; j++) {
         if (gameConfig[i][j] === 1) {
