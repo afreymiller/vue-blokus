@@ -73,7 +73,7 @@ const canvasApi = {
   
     let ctx = initGrid();
 
-    ctx.fillStyle = constants.LIGHT_GRAY;
+    ctx.fillStyle = constants.BLUE;
 
     const coords = getTileCoordsToRender(shapeConfig, xOffSet, yOffset);
 
