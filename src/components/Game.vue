@@ -67,13 +67,13 @@ export default {
       this.left = e.pageX - offset.left;
       this.top = e.pageY - offset.top;
 
-      canvasApi.updateCanvas(this.tileConfig, this.left, this.top);
+      canvasApi.updateCanvas(this.tileConfig, this.gameConfig, this.left, this.top);
     }
   },
   mounted() {
     window.addEventListener('mousemove', this.calculatePosition);
     window.addEventListener('mouseup', this.calculatePosition);
-    canvasApi.updateCanvas(this.tileConfig, 0, 0);
+    canvasApi.updateCanvas(this.tileConfig, this.gameConfig, 0, 0);
   }
 }
 </script>

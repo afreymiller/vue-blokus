@@ -1,8 +1,11 @@
+/* eslint-disable no-console */
 var $ = require('jquery');
 
 import constants from './constants.js';
 
-const initGrid = () => {
+const initGrid = (gameConfig) => {
+  console.log("gameConfig: ");
+  console.log(gameConfig);
   var bw = constants.CANVAS_WIDTH;
   var bh = constants.CANVAS_HEIGHT;
   //padding around grid
@@ -69,7 +72,7 @@ const canvasApi = {
   getCoords: (x) => {
     return getCoord(x);
   },
-  updateCanvas: (shapeConfig, xOffSet, yOffset) => {
+  updateCanvas: (shapeConfig, gameConfig, xOffSet, yOffset) => {
   
     let ctx = initGrid();
 
