@@ -78,6 +78,23 @@ const canvasApi = {
 
     ctx.fillStyle = constants.BLUE;
 
+    let i, j = 0;
+
+    const currState = [];
+
+    for (i = 0; i < 20; i++) {
+      for (j = 0; j < 20; j++) {
+        if (gameConfig[i][j] === 1) {
+          currState.push({
+            x: (20 * i) + 1,
+            y: (20 * j) + 1
+          });
+        }
+      }
+    }
+
+    renderPolyominoTiles(currState, ctx);
+
     const coords = getTileCoordsToRender(shapeConfig, xOffSet, yOffset);
 
     renderPolyominoTiles(coords, ctx);
