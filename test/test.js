@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 let assert = require('assert');
 let Set = require('./Set.js');
+let CanvasApi = require('./CanvasApi.js');
 
 describe('Array', function() {
   describe('indexOf()', function() {
@@ -17,4 +18,13 @@ describe('Set', function() {
       assert.equal(s.isEmpty(), true);
     })
   });
+});
+
+describe('CanvasApi', function() {
+  describe('canvas api', function() {
+    it('should initialize', () => {
+      let canvasApi = new CanvasApi();
+      canvasApi.getCoord(200, 100);
+    });
+  })
 });
