@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 let assert = require('assert');
-let Set = require('./Set.js');
-let CanvasApi = require('./CanvasApi.js');
+let Set = require('../src/Set.js');
+let CanvasApi = require('../src/CanvasApi.js');
 
 describe('Array', function() {
   describe('indexOf()', function() {
