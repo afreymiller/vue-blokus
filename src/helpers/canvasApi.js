@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 var $ = require('jquery');
 
 import constants from './constants.js';
@@ -65,14 +66,65 @@ const getTileCoordsToRender = (shapeConfig, xOffSet, yOffset) => {
   return coords;
 }
 
+const isValid = (gameConfig, tileConfig, xOffset, yOffset) => {
+  let xBox = getCoord(xOffset);
+  let yBox = getCoord(yOffset);
+
+  let i, j, xTile, yTile;
+
+  console.log(xBox);
+  console.log(yBox);
+
+  for (i = 0; i < 5; i++) {
+    for (j = 0; j < 5; j++) {
+      if (tileConfig[i][j] === 1) {
+        xTile = 2 - i;
+        yTile = 2 - j;
+
+        if ((xTile + xBox <= 20) && (xTile + xBox >= 0) &&
+          (yTile + yBox <= 20) && (yTile + yBox >= 0)) {
+            if (gameConfig[xTile+xBox][yTile+yBox] === 1) {
+              return false;
+            }
+          }        
+      }
+    }
+  }
+
+  return true;
+}
+
 const canvasApi = {
-  updateCanvas: (shapeConfig, xOffSet, yOffset) => {
+  getCoords: (x) => {
+    return getCoord(x);
+  },
+  updateCanvas: (tileConfig, gameConfig, xOffSet, yOffset) => {
   
     let ctx = initGrid();
 
-    ctx.fillStyle = constants.LIGHT_GRAY;
+    ctx.fillStyle = constants.BLUE;
 
-    const coords = getTileCoordsToRender(shapeConfig, xOffSet, yOffset);
+    let i, j = 0;
+
+    const currState = [];
+
+    /* TODO: This should live in its own function */
+    for (i = 0; i < 20; i++) {
+      for (j = 0; j < 20; j++) {
+        if (gameConfig[i][j] === 1) {
+          currState.push({
+            x: (20 * i) + 1,
+            y: (20 * j) + 1
+          });
+        }
+      }
+    }
+
+    console.log(isValid(gameConfig, tileConfig, xOffSet, yOffset));
+
+    renderPolyominoTiles(currState, ctx);
+
+    const coords = getTileCoordsToRender(tileConfig, xOffSet, yOffset);
 
     renderPolyominoTiles(coords, ctx);
   }
