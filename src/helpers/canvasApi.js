@@ -67,6 +67,8 @@ const getTileCoordsToRender = (shapeConfig, xOffSet, yOffset) => {
 }
 
 const isValid = (gameConfig, tileConfig, xOffset, yOffset) => {
+  console.log("xOffset: " + xOffset);
+  console.log("yOffeet: " + yOffset);
   let xBox = getCoord(xOffset);
   let yBox = getCoord(yOffset);
 
@@ -108,7 +110,7 @@ const canvasApi = {
 
     const currState = [];
 
-    /* TODO: This should live in its own function */
+    /* TODO: This should eventually live in its own function */
     for (i = 0; i < 20; i++) {
       for (j = 0; j < 20; j++) {
         if (gameConfig[i][j] === 1) {
@@ -120,13 +122,14 @@ const canvasApi = {
       }
     }
 
-    console.log(isValid(gameConfig, tileConfig, xOffSet, yOffset));
+    const isValidMove = isValid(gameConfig, tileConfig, xOffSet, yOffset);
 
     renderPolyominoTiles(currState, ctx);
 
-    const coords = getTileCoordsToRender(tileConfig, xOffSet, yOffset);
-
-    renderPolyominoTiles(coords, ctx);
+    if (isValidMove) {
+      const coords = getTileCoordsToRender(tileConfig, xOffSet, yOffset);
+      renderPolyominoTiles(coords, ctx);
+    }
   }
 }
 
