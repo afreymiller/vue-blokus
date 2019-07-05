@@ -47,9 +47,9 @@ export default {
       ],
       tileConfig: [
         [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 1, 1, 0, 0],
-        [0, 1, 1, 0, 0],
+        [0, 1, 0, 0, 0],
+        [0, 1, 1, 1, 0],
+        [0, 1, 0, 0, 0],
         [0, 0, 0, 0, 0]
       ]
     }
@@ -69,27 +69,9 @@ export default {
 
       canvasApi.updateCanvas(this.tileConfig, this.gameConfig, this.left, this.top);
     },
-    updateGameState: function(xCoord, yCoord) {
-      let i, j;
-      for (i = 0; i < 5; i++) {
-        for (j = 0; j < 5; j++) {
-          if (this.tileConfig[i][j] === 1) {
-            let xDel = 2 - i;
-            let yDel = 2 - j;
-
-            
-            let mapX = xCoord + xDel;
-            let mapY = yCoord + yDel;
-              
-            this.gameConfig[mapX][mapY] = 1;
-          }
-        }
-      }
-    },
     onClick: function() {
-      if (canvasApi.isValid(this.gameConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top))) {
-        this.updateGameState(canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
-      }
+      /* TODO: This should take place entirely in apiCanvas and return a game state */
+      this.gameConfig = canvasApi.updateGameState(this.gameConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
     }
   },
   mounted() {
