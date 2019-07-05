@@ -81,6 +81,13 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
 
             tileX = xCenterOffset + xCoord;
             tileY = yCenterOffset + yCoord;
+
+            if (gameConfig[tileX - 1][tileY] === 1 
+              || gameConfig[tileX + 1][tileY] === 1
+              || gameConfig[tileX][tileY - 1] === 1
+              || gameConfig[tileX][tileY + 1] === 1) {
+                return false;
+              }
             
             if (gameConfig[tileX][tileY] === 1) {
               return false;
