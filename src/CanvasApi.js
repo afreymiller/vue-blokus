@@ -5,7 +5,7 @@ class CanvasApi {
   }
 
   isValid(gameConfig, tileConfig, xCoord, yCoord) {
-    let i, j, xCenterOffset, yCenterOffset, tileX, tileY;
+    let i, j, xCenterOffset, yCenterOffset, tileX, tileY, isTouchingCorner = false;
 
     for (i = 0; i < 5; i++) {
       for (j = 0; j < 5; j++) {
@@ -29,12 +29,19 @@ class CanvasApi {
               if (gameConfig[tileX][tileY] === 1) {
                 return false;
               }
+
+              if (gameConfig[tileX - 1][tileY - 1] === 1
+                || gameConfig[tileX - 1][tileY + 1] === 1
+                || gameConfig[tileX + 1][tileY + 1] === 1
+                || gameConfig[tileX + 1][tileY - 1] === 1) {
+
+                isTouchingCorner = true;
             }        
         }
       }
     }
 
-    return true;
+    return isTouchingCorner;
   }
 }
 
