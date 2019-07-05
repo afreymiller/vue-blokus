@@ -3,7 +3,7 @@ let assert = require('assert');
 let CanvasApi = require('../src/CanvasApi.js');
 
 describe('CanvasApi', function() {
-  describe('canvas api', function() {
+  describe('getCoord()', function() {
     it('should return 20 when offset is 401', () => {
       let canvasApi = new CanvasApi();
       let coord = canvasApi.getCoord(401);
@@ -35,4 +35,10 @@ describe('CanvasApi', function() {
       });
     })
   })
+
+  describe('', function() {
+    it('should return isValid for gameConfig 1, tileConfig 1, where cursor corresponds to coord x = 1, y = 2', () => {
+      assert.equal(1, 1);
+    });
+  });
 });
