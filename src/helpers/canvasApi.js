@@ -76,40 +76,84 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
         xCenterOffset = 2 - i;
         yCenterOffset = 2 - j;
 
-        console.log("gameConfig: ");
-        console.log(gameConfig);
-
-        console.log("xCenterOffset: " + xCenterOffset);
-        console.log("yCenterOffset: " + yCenterOffset);
-
-        if ((xCenterOffset + xCoord <= 20) && (xCenterOffset + xCoord >= 0) &&
-          (yCenterOffset + yCoord <= 20) && (yCenterOffset + yCoord >= 0)) {
+        if ((xCenterOffset + xCoord <= 19) && (xCenterOffset + xCoord >= 0) &&
+          (yCenterOffset + yCoord <= 19) && (yCenterOffset + yCoord >= 0)) {
 
             tileX = xCenterOffset + xCoord;
             tileY = yCenterOffset + yCoord;
 
-            if (tileX <= 0 || tileX >= 20 || tileY <= 0 || tileY >= 20) {
+            if (tileX < 0 || tileX > 19 || tileY < 0 || tileY > 19) {
               return false;
             }
 
-            if (gameConfig[tileX - 1][tileY] === 1 
-              || gameConfig[tileX + 1][tileY] === 1
-              || gameConfig[tileX][tileY - 1] === 1
-              || gameConfig[tileX][tileY + 1] === 1) {
-                return false;
-              }
+            if (tileX > 1 && tileX < 18 && tileY > 1 && tileY < 18) {
+              if (gameConfig[tileX - 1][tileY] === 1 
+                || gameConfig[tileX + 1][tileY] === 1
+                || gameConfig[tileX][tileY - 1] === 1
+                || gameConfig[tileX][tileY + 1] === 1) {
+                  console.log("condition 1");
+                  return false;
+                }
+            }
+
+            if (tileX === 0 && tileY < 18 && tileY > 1) {
+              if (gameConfig[tileX + 1][tileY] === 1
+                || gameConfig[tileX][tileY - 1] === 1
+                || gameConfig[tileX][tileY + 1] === 1) {
+                  console.log("condition 2");
+                  return false;
+                }
+            }
+
+            if (tileX === 19 && tileY > 1 && tileY < 18) {
+              if (gameConfig[tileX - 1][tileY] === 1
+                || gameConfig[tileX][tileY - 1] === 1
+                || gameConfig[tileX][tileY + 1] === 1) {
+                  console.log("condition 3");
+                  return false;
+                }
+            }
+
+            if (tileY === 0 && tileX > 1 && tileX < 18) {
+              if (gameConfig[tileX - 1][tileY] === 1 
+                || gameConfig[tileX + 1][tileY] === 1
+                || gameConfig[tileX][tileY + 1] === 1) {
+                  console.log("condition 4");
+                  return false;
+                }
+            }
+
+            if (tileY === 19 && tileX > 1 && tileX < 18) {
+              if (gameConfig[tileX - 1][tileY] === 1 
+                || gameConfig[tileX + 1][tileY] === 1
+                || gameConfig[tileX][tileY - 1] === 1) {
+                  console.log("condition 5");
+                  return false;
+                }
+            }
             
             if (gameConfig[tileX][tileY] === 1) {
+              console.log("condition 6");
               return false;
             }
 
-            if (gameConfig[tileX - 1][tileY - 1] === 1
-              || gameConfig[tileX - 1][tileY + 1] === 1
-              || gameConfig[tileX + 1][tileY + 1] === 1
-              || gameConfig[tileX + 1][tileY - 1] === 1) {
+            if (tileX >= 1 && tileX < 18 && tileY > 1 && tileY < 18) {
+              if (gameConfig[tileX - 1][tileY - 1] === 1
+                || gameConfig[tileX - 1][tileY + 1] === 1
+                || gameConfig[tileX + 1][tileY + 1] === 1
+                || gameConfig[tileX + 1][tileY - 1] === 1) {
+  
+                isTouchingCorner = true;
+              } 
+            }
 
-              isTouchingCorner = true;
-            }    
+            if (tileX === 0 && tileX < 18 && tileY > 1 && tileY < 18) {
+              if (gameConfig[tileX + 1][tileY + 1] === 1
+                || gameConfig[tileX + 1][tileY - 1] === 1) {
+  
+                isTouchingCorner = true;
+              } 
+            }
           }        
       }
     }
