@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
 let assert = require('assert');
 let CanvasApi = require('../src/CanvasApi.js');
+let TileExamples = require('./tileExamples.js');
+let GameExamples = require('./gameExamples.js');
 
 describe('CanvasApi', function() {
   describe('getCoord()', function() {
@@ -38,6 +40,8 @@ describe('CanvasApi', function() {
 
   describe('', function() {
     it('should return isValid for gameConfig 1, tileConfig 1, where cursor corresponds to coord x = 1, y = 2', () => {
+      TileExamples.TILE_1;
+      GameExamples.GAME_1;
       assert.equal(1, 1);
     });
   });
