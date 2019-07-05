@@ -86,13 +86,7 @@ describe('CanvasApi', function() {
 
       let canvasApi = new CanvasApi();
 
-      console.log("GAME_2: ");
-      console.log(GameExamples.GAME_2);
-
       let updatedGame = canvasApi.updateGameState(GameExamples.GAME_1, TileExamples.TILE_1, x, y);
-
-      console.log("updated Game: ");
-      console.log(updatedGame);
 
       for (i = 0; i < 20; i++) {
         for (j = 0; j < 20; j++) {
