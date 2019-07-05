@@ -76,9 +76,6 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
         xCenterOffset = 2 - i;
         yCenterOffset = 2 - j;
 
-        console.log("xCoord: " + xCoord);
-        console.log("yCoord: " + yCoord);
-
         if ((xCenterOffset + xCoord <= 19) && (xCenterOffset + xCoord >= 0) &&
           (yCenterOffset + yCoord <= 19) && (yCenterOffset + yCoord >= 0)) {
 
@@ -241,6 +238,7 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
 }
 
 const canvasApi = {
+  isValid,
   getCoords: (x) => {
     return getCoord(x);
   },
