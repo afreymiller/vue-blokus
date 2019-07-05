@@ -69,23 +69,24 @@ const getTileCoordsToRender = (shapeConfig, xOffSet, yOffset) => {
 const isValid = (gameConfig, tileConfig, xOffset, yOffset) => {
   console.log("xOffset: " + xOffset);
   console.log("yOffeet: " + yOffset);
-  let xBox = getCoord(xOffset);
-  let yBox = getCoord(yOffset);
+  let xCoord = getCoord(xOffset);
+  let yCoord = getCoord(yOffset);
 
-  let i, j, xTile, yTile;
-
-  console.log(xBox);
-  console.log(yBox);
+  let i, j, xCenterOffset, yCenterOffset, tileX, tileY;
 
   for (i = 0; i < 5; i++) {
     for (j = 0; j < 5; j++) {
       if (tileConfig[i][j] === 1) {
-        xTile = 2 - i;
-        yTile = 2 - j;
+        xCenterOffset = 2 - i;
+        yCenterOffset = 2 - j;
 
-        if ((xTile + xBox <= 20) && (xTile + xBox >= 0) &&
-          (yTile + yBox <= 20) && (yTile + yBox >= 0)) {
-            if (gameConfig[xTile+xBox][yTile+yBox] === 1) {
+        if ((xCenterOffset + xCoord <= 20) && (xCenterOffset + xCoord >= 0) &&
+          (yCenterOffset + yCoord <= 20) && (yCenterOffset + yCoord >= 0)) {
+
+            tileX = xCenterOffset + xCoord;
+            tileY = yCenterOffset + yCoord;
+            
+            if (gameConfig[tileX][tileY] === 1) {
               return false;
             }
           }        
