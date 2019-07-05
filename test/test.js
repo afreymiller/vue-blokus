@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-undef */
 let assert = require('assert');
 let CanvasApi = require('../src/CanvasApi.js');
@@ -74,6 +75,30 @@ describe('CanvasApi', function() {
       let canvasApi = new CanvasApi();
 
       assert.equal(canvasApi.isValid(GameExamples.GAME_1, TileExamples.TILE_1, x, y), false);
+    });
+  });
+
+  describe('updateGameState()', function() {
+    it('should update game config 1, tileConfig 1, where cursor corresponds to coord x = 3, y = 2', () => {
+      let x = 3;
+      let y = 2;
+      let i, j;
+
+      let canvasApi = new CanvasApi();
+
+      console.log("GAME_2: ");
+      console.log(GameExamples.GAME_2);
+
+      let updatedGame = canvasApi.updateGameState(GameExamples.GAME_1, TileExamples.TILE_1, x, y);
+
+      console.log("updated Game: ");
+      console.log(updatedGame);
+
+      for (i = 0; i < 20; i++) {
+        for (j = 0; j < 20; j++) {
+          assert.equal(GameExamples.GAME_2[i][j], updatedGame[i][j]);
+        }
+      }
     });
   });
 });
