@@ -86,58 +86,83 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
               return false;
             }
 
-            if (tileX > 1 && tileX < 18 && tileY > 1 && tileY < 18) {
+            if (tileX > 0 && tileX < 19 && tileY > 0 && tileY < 19) {
               if (gameConfig[tileX - 1][tileY] === 1 
                 || gameConfig[tileX + 1][tileY] === 1
                 || gameConfig[tileX][tileY - 1] === 1
                 || gameConfig[tileX][tileY + 1] === 1) {
-                  console.log("condition 1");
                   return false;
                 }
             }
 
-            if (tileX === 0 && tileY < 18 && tileY > 1) {
+            if (tileX === 0 && tileY < 19 && tileY > 0) {
               if (gameConfig[tileX + 1][tileY] === 1
                 || gameConfig[tileX][tileY - 1] === 1
                 || gameConfig[tileX][tileY + 1] === 1) {
-                  console.log("condition 2");
                   return false;
                 }
             }
 
-            if (tileX === 19 && tileY > 1 && tileY < 18) {
+            if (tileX === 0 && tileY === 19) {
+              if (gameConfig[tileX + 1][tileY] === 1
+                || gameConfig[tileX][tileY - 1] === 1
+               ) {
+                  return false;
+                }
+            }
+
+            if (tileX === 0 && tileY === 0) {
+              if (gameConfig[tileX + 1][tileY] === 1
+                || gameConfig[tileX][tileY + 1] === 1) {
+                  return false;
+                }
+            }
+
+            if (tileX === 19 && tileY > 0 && tileY < 19) {
               if (gameConfig[tileX - 1][tileY] === 1
                 || gameConfig[tileX][tileY - 1] === 1
                 || gameConfig[tileX][tileY + 1] === 1) {
-                  console.log("condition 3");
                   return false;
                 }
             }
 
-            if (tileY === 0 && tileX > 1 && tileX < 18) {
-              if (gameConfig[tileX - 1][tileY] === 1 
-                || gameConfig[tileX + 1][tileY] === 1
-                || gameConfig[tileX][tileY + 1] === 1) {
-                  console.log("condition 4");
+            if (tileX === 19 && tileY == 19) {
+              if (gameConfig[tileX - 1][tileY] === 1
+                || gameConfig[tileX][tileY - 1] === 1
+              ) {
                   return false;
                 }
             }
 
-            if (tileY === 19 && tileX > 1 && tileX < 18) {
-              if (gameConfig[tileX - 1][tileY] === 1 
-                || gameConfig[tileX + 1][tileY] === 1
-                || gameConfig[tileX][tileY - 1] === 1) {
-                  console.log("condition 5");
+            if (tileX === 19 && tileY == 0) {
+              if (gameConfig[tileX - 1][tileY] === 1
+                || gameConfig[tileX][tileY + 1] === 1
+              ) {
                   return false;
                 }
+            }
+
+            if (tileY === 0 && tileX > 0 && tileX < 19) {
+              if (gameConfig[tileX - 1][tileY] === 1
+              || gameConfig[tileX + 1][tileY] === 1
+              || gameConfig[tileX][tileY + 1] === 1) {
+                return false;
+              }
+            }
+
+            if (tileY === 19 && tileX > 0 && tileX < 19) {
+              if (gameConfig[tileX - 1][tileY] === 1
+              || gameConfig[tileX + 1][tileY] === 1
+              || gameConfig[tileX][tileY - 1] === 1) {
+                return false;
+              }
             }
             
             if (gameConfig[tileX][tileY] === 1) {
-              console.log("condition 6");
               return false;
             }
 
-            if (tileX >= 1 && tileX < 18 && tileY > 1 && tileY < 18) {
+            if (tileX > 0 && tileX < 18 && tileY > 0 && tileY < 18) {
               if (gameConfig[tileX - 1][tileY - 1] === 1
                 || gameConfig[tileX - 1][tileY + 1] === 1
                 || gameConfig[tileX + 1][tileY + 1] === 1
@@ -147,10 +172,58 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
               } 
             }
 
-            if (tileX === 0 && tileX < 18 && tileY > 1 && tileY < 18) {
+            if (tileX === 0 && tileY > 0 && tileY < 19) {
               if (gameConfig[tileX + 1][tileY + 1] === 1
                 || gameConfig[tileX + 1][tileY - 1] === 1) {
   
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileX === 0 && tileY === 0) {
+              if (gameConfig[tileX + 1][tileY + 1] === 1) {
+  
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileX === 0 && tileY === 19) {
+              if (gameConfig[tileX + 1][tileY - 1] === 1) {
+  
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileX === 19 && tileY > 0 && tileY < 19) {
+              if (gameConfig[tileX - 1][tileY - 1] === 1
+                || gameConfig[tileX - 1][tileY + 1] === 1) {
+  
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileX === 19 && tileY === 19) {
+              if (gameConfig[tileX - 1][tileY - 1] === 1) {
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileX === 19 && tileY === 0) {
+              if (gameConfig[tileX - 1][tileY + 1] === 1) {
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileY === 0 && tileX > 0 && tileX < 19) {
+              if (gameConfig[tileX - 1][tileY + 1] === 1 
+              || gameConfig[tileX + 1][tileY + 1] === 1) {
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileY === 19 && tileX > 0 && tileX < 19) {
+              if (gameConfig[tileX - 1][tileY - 1] === 1 
+              || gameConfig[tileX + 1][tileY - 1] === 1) {
                 isTouchingCorner = true;
               } 
             }
