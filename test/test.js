@@ -40,8 +40,6 @@ describe('CanvasApi', function() {
 
   describe('', function() {
     it('should return is invalid for gameConfig 1, tileConfig 1, where cursor corresponds to coord x = 2, y = 2', () => {
-      TileExamples.TILE_1;
-      GameExamples.GAME_1;
       let x = 3;
       let y = 3;
 
