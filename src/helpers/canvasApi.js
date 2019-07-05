@@ -141,6 +141,22 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
                   return false;
                 }
             }
+
+            if (tileY === 0 && tileX > 0 && tileX < 19) {
+              if (gameConfig[tileX - 1][tileY] === 1
+              || gameConfig[tileX + 1][tileY] === 1
+              || gameConfig[tileX][tileY + 1] === 1) {
+                return false;
+              }
+            }
+
+            if (tileY === 19 && tileX > 0 && tileX < 19) {
+              if (gameConfig[tileX - 1][tileY] === 1
+              || gameConfig[tileX + 1][tileY] === 1
+              || gameConfig[tileX][tileY - 1] === 1) {
+                return false;
+              }
+            }
             
             if (gameConfig[tileX][tileY] === 1) {
               return false;
@@ -156,10 +172,58 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
               } 
             }
 
-            if (tileX === 0 && tileX < 18 && tileY > 1 && tileY < 18) {
+            if (tileX === 0 && tileY > 0 && tileY < 19) {
               if (gameConfig[tileX + 1][tileY + 1] === 1
                 || gameConfig[tileX + 1][tileY - 1] === 1) {
   
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileX === 0 && tileY === 0) {
+              if (gameConfig[tileX + 1][tileY + 1] === 1) {
+  
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileX === 0 && tileY === 19) {
+              if (gameConfig[tileX + 1][tileY - 1] === 1) {
+  
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileX === 19 && tileY > 0 && tileY < 19) {
+              if (gameConfig[tileX - 1][tileY - 1] === 1
+                || gameConfig[tileX - 1][tileY + 1] === 1) {
+  
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileX === 19 && tileY === 19) {
+              if (gameConfig[tileX - 1][tileY - 1] === 1) {
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileX === 19 && tileY === 0) {
+              if (gameConfig[tileX - 1][tileY + 1] === 1) {
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileY === 0 && tileX > 0 && tileX < 19) {
+              if (gameConfig[tileX - 1][tileY + 1] === 1 
+              || gameConfig[tileX + 1][tileY + 1] === 1) {
+                isTouchingCorner = true;
+              } 
+            }
+
+            if (tileY === 19 && tileX > 0 && tileX < 19) {
+              if (gameConfig[tileX - 1][tileY - 1] === 1 
+              || gameConfig[tileX + 1][tileY - 1] === 1) {
                 isTouchingCorner = true;
               } 
             }
