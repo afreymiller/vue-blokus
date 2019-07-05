@@ -37,6 +37,7 @@ class CanvasApi {
 
                 isTouchingCorner = true;
             }        
+          }
         }
       }
     }

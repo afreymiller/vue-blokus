@@ -76,11 +76,21 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
         xCenterOffset = 2 - i;
         yCenterOffset = 2 - j;
 
+        console.log("gameConfig: ");
+        console.log(gameConfig);
+
+        console.log("xCenterOffset: " + xCenterOffset);
+        console.log("yCenterOffset: " + yCenterOffset);
+
         if ((xCenterOffset + xCoord <= 20) && (xCenterOffset + xCoord >= 0) &&
           (yCenterOffset + yCoord <= 20) && (yCenterOffset + yCoord >= 0)) {
 
             tileX = xCenterOffset + xCoord;
             tileY = yCenterOffset + yCoord;
+
+            if (tileX <= 0 || tileX >= 20 || tileY <= 0 || tileY >= 20) {
+              return false;
+            }
 
             if (gameConfig[tileX - 1][tileY] === 1 
               || gameConfig[tileX + 1][tileY] === 1
