@@ -272,8 +272,6 @@ const canvasApi = {
 
     const isValidMove = isValid(gameConfig, tileConfig, xCoord, yCoord);
 
-    console.log("isValidMove: " + isValidMove);
-
     renderPolyominoTiles(currState, ctx);
 
     if (isValidMove) {
