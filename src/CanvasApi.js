@@ -4,28 +4,36 @@ class CanvasApi {
     return Math.floor(offset/20);
   }
 
-  isValid(gameConfig, tileConfig, xOffset, yOffset) {
-    let xBox = this.getCoord(xOffset);
-    let yBox = this.getCoord(yOffset);
-  
-    let i, j, xTile, yTile;
-  
+  isValid(gameConfig, tileConfig, xCoord, yCoord) {
+    let i, j, xCenterOffset, yCenterOffset, tileX, tileY;
+
     for (i = 0; i < 5; i++) {
       for (j = 0; j < 5; j++) {
         if (tileConfig[i][j] === 1) {
-          xTile = 2 - i;
-          yTile = 2 - j;
-  
-          if ((xTile + xBox <= 20) && (xTile + xBox >= 0) &&
-            (yTile + yBox <= 20) && (yTile + yBox >= 0)) {
-              if (gameConfig[xTile+xBox][yTile+yBox] === 1) {
+          xCenterOffset = 2 - i;
+          yCenterOffset = 2 - j;
+
+          if ((xCenterOffset + xCoord <= 20) && (xCenterOffset + xCoord >= 0) &&
+            (yCenterOffset + yCoord <= 20) && (yCenterOffset + yCoord >= 0)) {
+
+              tileX = xCenterOffset + xCoord;
+              tileY = yCenterOffset + yCoord;
+              
+              if (gameConfig[tileX - 1][tileY] === 1 
+                || gameConfig[tileX + 1][tileY] === 1
+                || gameConfig[tileX][tileY - 1] === 1
+                || gameConfig[tileX][tileY + 1] === 1) {
+                  return false;
+                }
+
+              if (gameConfig[tileX][tileY] === 1) {
                 return false;
               }
             }        
         }
       }
     }
-  
+
     return true;
   }
 }
