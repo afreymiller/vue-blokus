@@ -76,6 +76,9 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
         xCenterOffset = 2 - i;
         yCenterOffset = 2 - j;
 
+        console.log("xCoord: " + xCoord);
+        console.log("yCoord: " + yCoord);
+
         if ((xCenterOffset + xCoord <= 19) && (xCenterOffset + xCoord >= 0) &&
           (yCenterOffset + yCoord <= 19) && (yCenterOffset + yCoord >= 0)) {
 
@@ -268,6 +271,8 @@ const canvasApi = {
     let yCoord = getCoord(yOffset);
 
     const isValidMove = isValid(gameConfig, tileConfig, xCoord, yCoord);
+
+    console.log("isValidMove: " + isValidMove);
 
     renderPolyominoTiles(currState, ctx);
 
