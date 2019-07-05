@@ -39,10 +39,15 @@ describe('CanvasApi', function() {
   })
 
   describe('', function() {
-    it('should return isValid for gameConfig 1, tileConfig 1, where cursor corresponds to coord x = 1, y = 2', () => {
+    it('should return is invalid for gameConfig 1, tileConfig 1, where cursor corresponds to coord x = 2, y = 2', () => {
       TileExamples.TILE_1;
       GameExamples.GAME_1;
-      assert.equal(1, 1);
+      let x = 3;
+      let y = 3;
+
+      let canvasApi = new CanvasApi();
+
+      assert(canvasApi.isValid(GameExamples.GAME_1, TileExamples.TILE_1, x, y), false);
     });
   });
 });
