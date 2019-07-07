@@ -1,10 +1,14 @@
 <template>
   <div>
+    {{ selection }}
     <polyomino
-      :config="rowConfig1" 
+      :config="tile1" 
     />
     <polyomino
-      :config="rowConfig2" 
+      :config="tile2" 
+    />
+    <polyomino
+      :config="tile3"
     />
   </div>
 </template>
@@ -17,20 +21,30 @@ export default {
   components: {
     Polyomino
   },
+  props: {
+    selection: Number
+  },
   data () {
     return {
-      rowConfig1: [
+      tile1: [
         [0, 0, 0, 0, 0],
         [0, 1, 0, 1, 0],
         [0, 1, 1, 1, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0]
       ],
-      rowConfig2: [
+      tile2: [
         [0, 0, 0, 0, 0],
         [0, 0, 1, 0, 0],
         [0, 0, 1, 1, 0],
         [0, 0, 1, 1, 0],
+        [0, 0, 0, 0, 0]
+      ],
+      tile3: [
+        [0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [0, 1, 1, 1, 0],
+        [0, 0, 1, 0, 0],
         [0, 0, 0, 0, 0]
       ]
     }
