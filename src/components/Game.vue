@@ -1,7 +1,9 @@
 <template>
   <div>
     <board/>
-    <bag/>
+    <bag
+      :selection=2
+    />
   </div>
 </template>
 
