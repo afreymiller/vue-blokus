@@ -79,8 +79,6 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
         tileX = xCenterOffset + xCoord;
         tileY = yCenterOffset + yCoord;
 
-        console.log("(x, y): ", tileX, tileY);
-
         if ((tileX <= 19) && (tileX >= 0) &&
           (tileY <= 19) && (tileY >= 0)) {
 
