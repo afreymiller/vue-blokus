@@ -2,8 +2,14 @@
   <div>
     <board/>
     <bag
-      :selection=2
+      :selection="selected"
     />
+    <select v-model="selected">
+      <option disabled value="">Please select one:</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+    </select>
   </div>
 </template>
 
@@ -25,6 +31,7 @@ export default {
     return {
       left: 0,
       top: 0,
+      selected: 0,
       gameConfig: [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
