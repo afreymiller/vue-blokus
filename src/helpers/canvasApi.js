@@ -76,11 +76,13 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
         xCenterOffset = 2 - i;
         yCenterOffset = 2 - j;
 
-        if ((xCenterOffset + xCoord <= 19) && (xCenterOffset + xCoord >= 0) &&
-          (yCenterOffset + yCoord <= 19) && (yCenterOffset + yCoord >= 0)) {
+        tileX = xCenterOffset + xCoord;
+        tileY = yCenterOffset + yCoord;
 
-            tileX = xCenterOffset + xCoord;
-            tileY = yCenterOffset + yCoord;
+        console.log("(x, y): ", tileX, tileY);
+
+        if ((tileX <= 19) && (tileX >= 0) &&
+          (tileY <= 19) && (tileY >= 0)) {
 
             if (tileX < 0 || tileX > 19 || tileY < 0 || tileY > 19) {
               return false;
@@ -162,7 +164,7 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
               return false;
             }
 
-            if (tileX > 0 && tileX < 18 && tileY > 0 && tileY < 18) {
+            if (tileX > 0 && tileX < 19 && tileY > 0 && tileY < 19) {
               if (gameConfig[tileX - 1][tileY - 1] === 1
                 || gameConfig[tileX - 1][tileY + 1] === 1
                 || gameConfig[tileX + 1][tileY + 1] === 1
@@ -292,6 +294,8 @@ const canvasApi = {
     let yCoord = getCoord(yOffset);
 
     const isValidMove = isValid(gameConfig, tileConfig, xCoord, yCoord);
+
+    console.log("x, y isValid: " + isValidMove);
 
     renderPolyominoTiles(currState, ctx);
 
