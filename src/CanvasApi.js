@@ -99,7 +99,7 @@ class CanvasApi {
                 return false;
               }
 
-              if (tileX > 0 && tileX < 18 && tileY > 0 && tileY < 18) {
+              if (tileX > 0 && tileX < 19 && tileY > 0 && tileY < 19) {
                 if (gameConfig[tileX - 1][tileY - 1] === 1
                   || gameConfig[tileX - 1][tileY + 1] === 1
                   || gameConfig[tileX + 1][tileY + 1] === 1
