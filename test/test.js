@@ -184,6 +184,15 @@ describe('CanvasApi', function() {
 
       assert.equal(canvasApi.isValid(GameExamples.GAME_11, TileExamples.TILE_6, x, y), true);
     });
+
+    it('should return is invalid for gameConfig 11, tileConfig 6, where cursor corresponds to coord x = 18, y = 1', () => {
+      let x = 18;
+      let y = 1;
+
+      let canvasApi = new CanvasApi();
+
+      assert.equal(canvasApi.isValid(GameExamples.GAME_11, TileExamples.TILE_6, x, y), false);
+    });
   });
 
   describe('updateGameState()', function() {
