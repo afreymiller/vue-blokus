@@ -1,7 +1,10 @@
 /* eslint-disable no-console */
 var $ = require('jquery');
+var _ = require('lodash');
 
 import constants from './constants.js';
+
+console.log(_.random(20));
 
 const initGrid = () => {
   var bw = constants.CANVAS_WIDTH;
@@ -82,80 +85,12 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
         if ((tileX <= 19) && (tileX >= 0) &&
           (tileY <= 19) && (tileY >= 0)) {
 
-            if (tileX < 0 || tileX > 19 || tileY < 0 || tileY > 19) {
+            if (_.get(gameConfig, `${tileX-1}.${tileY}`) === 1 ||
+              _.get(gameConfig, `${tileX+1}.${tileY}`) === 1 ||
+              _.get(gameConfig, `${tileX}.${tileY-1}`) === 1 ||
+              _.get(gameConfig, `${tileX}.${tileY+1}`) === 1 
+            ) {
               return false;
-            }
-
-            if (tileX > 0 && tileX < 19 && tileY > 0 && tileY < 19) {
-              if (gameConfig[tileX - 1][tileY] === 1 
-                || gameConfig[tileX + 1][tileY] === 1
-                || gameConfig[tileX][tileY - 1] === 1
-                || gameConfig[tileX][tileY + 1] === 1) {
-                  return false;
-                }
-            }
-
-            if (tileX === 0 && tileY < 19 && tileY > 0) {
-              if (gameConfig[tileX + 1][tileY] === 1
-                || gameConfig[tileX][tileY - 1] === 1
-                || gameConfig[tileX][tileY + 1] === 1) {
-                  return false;
-                }
-            }
-
-            if (tileX === 0 && tileY === 19) {
-              if (gameConfig[tileX + 1][tileY] === 1
-                || gameConfig[tileX][tileY - 1] === 1
-               ) {
-                  return false;
-                }
-            }
-
-            if (tileX === 0 && tileY === 0) {
-              if (gameConfig[tileX + 1][tileY] === 1
-                || gameConfig[tileX][tileY + 1] === 1) {
-                  return false;
-                }
-            }
-
-            if (tileX === 19 && tileY > 0 && tileY < 19) {
-              if (gameConfig[tileX - 1][tileY] === 1
-                || gameConfig[tileX][tileY - 1] === 1
-                || gameConfig[tileX][tileY + 1] === 1) {
-                  return false;
-                }
-            }
-
-            if (tileX === 19 && tileY == 19) {
-              if (gameConfig[tileX - 1][tileY] === 1
-                || gameConfig[tileX][tileY - 1] === 1
-              ) {
-                  return false;
-                }
-            }
-
-            if (tileX === 19 && tileY == 0) {
-              if (gameConfig[tileX - 1][tileY] === 1
-                || gameConfig[tileX][tileY + 1] === 1
-              ) {
-                  return false;
-                }
-            }
-
-            if (tileY === 0 && tileX > 0 && tileX < 19) {
-              if (gameConfig[tileX - 1][tileY] === 1
-              || gameConfig[tileX + 1][tileY] === 1
-              || gameConfig[tileX][tileY + 1] === 1) {
-                return false;
-              }
-            }
-
-            if (tileY === 19 && tileX > 0 && tileX < 19) {
-              if (gameConfig[tileX - 1][tileY] === 1
-              || gameConfig[tileX + 1][tileY] === 1
-              || gameConfig[tileX][tileY - 1] === 1) {
-                return false;
-              }
             }
             
             if (gameConfig[tileX][tileY] === 1) {
