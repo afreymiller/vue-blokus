@@ -6959,6 +6959,12 @@ vue-loader@^15.4.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-lodash@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/vue-lodash/-/vue-lodash-2.0.2.tgz#08019cc1969ecdf3346017865f86cf4dade0618c"
+  dependencies:
+    lodash "^4.17.11"
+
 vue-style-loader@^4.1.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.2.tgz#dedf349806f25ceb4e64f3ad7c0a44fba735fcf8"
