@@ -4,8 +4,6 @@ var _ = require('lodash');
 
 import constants from './constants.js';
 
-console.log(_.random(20));
-
 const initGrid = () => {
   var bw = constants.CANVAS_WIDTH;
   var bh = constants.CANVAS_HEIGHT;
@@ -69,6 +67,20 @@ const getTileCoordsToRender = (shapeConfig, xOffSet, yOffset) => {
   return coords;
 }
 
+const isTouchingSameColorHorizontally = (gameConfig, tileX, tileY) => {
+  return _.get(gameConfig, `${tileX-1}.${tileY}`) === 1 ||
+  _.get(gameConfig, `${tileX+1}.${tileY}`) === 1 ||
+  _.get(gameConfig, `${tileX}.${tileY-1}`) === 1 ||
+  _.get(gameConfig, `${tileX}.${tileY+1}`) === 1;
+}
+
+const isTouchingSameColorDiagonally = (gameConfig, tileX, tileY) => {
+  return _.get(gameConfig, `${tileX-1}.${tileY-1}`) === 1 ||
+  _.get(gameConfig, `${tileX-1}.${tileY+1}`) === 1 ||
+  _.get(gameConfig, `${tileX+1}.${tileY+1}`) === 1 ||
+  _.get(gameConfig, `${tileX+1}.${tileY-1}`) === 1;
+}
+
 const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {  
 
   let i, j, xCenterOffset, yCenterOffset, tileX, tileY, isTouchingCorner = false;
@@ -85,11 +97,7 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
         if ((tileX <= 19) && (tileX >= 0) &&
           (tileY <= 19) && (tileY >= 0)) {
 
-            if (_.get(gameConfig, `${tileX-1}.${tileY}`) === 1 ||
-              _.get(gameConfig, `${tileX+1}.${tileY}`) === 1 ||
-              _.get(gameConfig, `${tileX}.${tileY-1}`) === 1 ||
-              _.get(gameConfig, `${tileX}.${tileY+1}`) === 1 
-            ) {
+            if (isTouchingSameColorHorizontally(gameConfig, tileX, tileY)) {
               return false;
             }
             
@@ -97,11 +105,7 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
               return false;
             }
 
-            if (_.get(gameConfig, `${tileX-1}.${tileY-1}`) === 1 ||
-              _.get(gameConfig, `${tileX-1}.${tileY+1}`) === 1 ||
-              _.get(gameConfig, `${tileX+1}.${tileY+1}`) === 1 ||
-              _.get(gameConfig, `${tileX+1}.${tileY-1}`) === 1
-            ) {
+            if (isTouchingSameColorDiagonally(gameConfig, tileX, tileY)) {
               isTouchingCorner = true;
             }
           } else {
