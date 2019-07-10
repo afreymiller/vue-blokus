@@ -56,9 +56,9 @@ export default {
       ],
       tileConfig: [
         [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
+        [0, 0, 1, 1, 0],
         [0, 0, 1, 0, 0],
-        [0, 0, 0, 0, 0],
+        [0, 0, 1, 1, 0],
         [0, 0, 0, 0, 0]
       ]
     }
@@ -85,6 +85,7 @@ export default {
     }
   },
   mounted() {
+    // eslint-disable-next-line no-console
     window.addEventListener('mousemove', this.calculatePosition);
     window.addEventListener('mouseup', this.calculatePosition);
     window.addEventListener('click', this.onClick);
