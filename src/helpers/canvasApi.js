@@ -81,6 +81,10 @@ const isTouchingSameColorDiagonally = (gameConfig, tileX, tileY) => {
   _.get(gameConfig, `${tileX+1}.${tileY-1}`) === 1;
 }
 
+const isOverlappingTile = (gameConfig, tileX, tileY) => {
+  return _.get(gameConfig, `${tileX}.${tileY}`) === 1;
+}
+
 const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {  
 
   let i, j, xCenterOffset, yCenterOffset, tileX, tileY, isTouchingCorner = false;
@@ -101,16 +105,16 @@ const isValid = (gameConfig, tileConfig, xCoord, yCoord) => {
               return false;
             }
             
-            if (gameConfig[tileX][tileY] === 1) {
+            if (isOverlappingTile(gameConfig, tileX, tileY)) {
               return false;
             }
 
             if (isTouchingSameColorDiagonally(gameConfig, tileX, tileY)) {
               isTouchingCorner = true;
             }
-          } else {
-            return false;
-          }      
+        } else {
+          return false;
+        }      
       }
     }
   }
@@ -127,7 +131,6 @@ const updateGameState = (gameConfig, tileConfig, xCoord, yCoord) => {
           let xDel = 2 - i;
           let yDel = 2 - j;
   
-          
           let mapX = xCoord + xDel;
           let mapY = yCoord + yDel;
             
