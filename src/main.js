@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App.vue'
 import BootstrapVue from "bootstrap-vue"
+import VueLodash from 'vue-lodash'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 
@@ -10,6 +11,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css"
 Vue.config.productionTip = false
 Vue.use(Vuex)
 Vue.use(BootstrapVue)
+Vue.use(VueLodash);
 
 const gameModule = {
   state: {
