@@ -1,7 +1,10 @@
 /* eslint-disable no-console */
 var $ = require('jquery');
+var _ = require('lodash');
 
 import constants from './constants.js';
+
+console.log(_.random(20));
 
 const initGrid = () => {
   var bw = constants.CANVAS_WIDTH;
