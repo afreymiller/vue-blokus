@@ -1,14 +1,17 @@
 <template>
-  <div>
+  <div class="row">
     {{ selection }}
     <polyomino
       :config="tile1" 
+      class="col-md-2"
     />
     <polyomino
-      :config="tile2" 
+      :config="tile2"
+      class="col-md-2" 
     />
     <polyomino
       :config="tile3"
+      class="col-md-2"
     />
   </div>
 </template>
