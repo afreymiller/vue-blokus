@@ -10,6 +10,11 @@
       <option>2</option>
       <option>3</option>
     </select>
+    <button type="button"
+      v-on:click="alert('Hello!')"
+    >
+      Rotate tile 90 degrees
+    </button>
   </div>
 </template>
 
