@@ -4,6 +4,7 @@ let assert = require('assert');
 let CanvasApi = require('../src/CanvasApi.js');
 let TileExamples = require('./tileExamples.js');
 let GameExamples = require('./gameExamples.js');
+let MatrixTransformApi = require('../src/MatrixTransformApi.js');
 
 describe('CanvasApi', function() {
   describe('getCoord()', function() {
@@ -220,5 +221,34 @@ describe('CanvasApi', function() {
         }
       }
     });
+  });
+});
+
+describe('MatrixTransformApi', function() {
+  it('should properly rotate a matrix 90 degrees', () => {
+    const m1 = [
+      [1, 1, 1, 1],
+      [2, 2, 2, 2],
+      [3, 3, 3, 3],
+      [4, 4, 4, 4]
+    ];
+
+    const m2 = [
+      [4, 3, 2, 1],
+      [4, 3, 2, 1],
+      [4, 3, 2, 1],
+      [4, 3, 2, 1]
+    ];
+
+    let MatrixTransformLib = new MatrixTransformApi();
+
+    let rotated = MatrixTransformLib.rotateClockwise(m1);
+
+    let i = 0, j = 0;
+    for (i = 0; i < 4; i++) {
+      for (j = 0; j < 4; j++) {
+        assert.equal(rotated[i][j], m2[i][j]);
+      }
+    }
   });
 });
