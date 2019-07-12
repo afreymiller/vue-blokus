@@ -23,6 +23,7 @@ var $ = require('jquery')
 window.jQuery = $
 import { mapState, mapMutations } from 'vuex'
 import canvasApi from '../helpers/canvasApi.js'
+import matrixTransformApi from '../helpers/matrixTransformApi.js'
 import Board from './Board.vue'
 import Bag from './Bag.vue'
 
@@ -78,6 +79,7 @@ export default {
     }),
     handleRotate: function() {
       alert("clicked rotate!");
+      this.tileConfig = matrixTransformApi.rotateClockwise(this.tileConfig);
     },
     calculatePosition: function(e) {
       let offset = $("canvas").offset();
