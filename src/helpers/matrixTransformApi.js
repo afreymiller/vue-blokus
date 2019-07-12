@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
-const rotateClockwise = () => {
-  return;
+const rotateClockwise = (matrix) => {
+  return matrix;
 }
 
 const matrixTransformsApi = {
