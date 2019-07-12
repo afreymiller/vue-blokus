@@ -11,7 +11,7 @@
       <option>3</option>
     </select>
     <button type="button"
-      v-on:click="alert('Hello!')"
+      v-on:click="handleRotate()"
     >
       Rotate tile 90 degrees
     </button>
@@ -76,6 +76,9 @@ export default {
       inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
       dec: 'game/decrement'
     }),
+    handleRotate: function() {
+      alert("clicked rotate!");
+    },
     calculatePosition: function(e) {
       let offset = $("canvas").offset();
       this.left = e.pageX - offset.left;
