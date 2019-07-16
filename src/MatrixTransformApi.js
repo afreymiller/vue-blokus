@@ -11,6 +11,19 @@ class MatrixTransformApi {
     matrix.push(...result);  // Spread operator
     return matrix;
   }
+  rotateCounterclockwise(matrix) {
+    var n=matrix.length;
+    for (var i=0; i<n/2; i++) {
+        for (var j=i; j<n-i-1; j++) {
+            var tmp=matrix[i][j];
+            matrix[i][j]=matrix[j][n-i-1];
+            matrix[j][n-i-1]=matrix[n-i-1][n-j-1];
+            matrix[n-i-1][n-j-1]=matrix[n-j-1][i];
+            matrix[n-j-1][i]=tmp;
+        }
+    }
+    return matrix;
+  }
 }
 
 module.exports = MatrixTransformApi;
