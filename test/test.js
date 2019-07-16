@@ -225,7 +225,7 @@ describe('CanvasApi', function() {
 });
 
 describe('MatrixTransformApi', function() {
-  it('should properly rotate a matrix 90 degrees', () => {
+  it('should properly rotate a matrix 90 degrees clockwise', () => {
     const m1 = [
       [1, 1, 1, 1],
       [2, 2, 2, 2],
@@ -243,6 +243,33 @@ describe('MatrixTransformApi', function() {
     let MatrixTransformLib = new MatrixTransformApi();
 
     let rotated = MatrixTransformLib.rotateClockwise(m1);
+
+    let i = 0, j = 0;
+    for (i = 0; i < 4; i++) {
+      for (j = 0; j < 4; j++) {
+        assert.equal(rotated[i][j], m2[i][j]);
+      }
+    }
+  });
+
+  it('should properly rotate a matrix 90 degrees counterclockwise', () => {
+    const m1 = [
+      [1, 1, 1, 1],
+      [2, 2, 2, 2],
+      [3, 3, 3, 3],
+      [4, 4, 4, 4]
+    ];
+
+    const m2 = [
+      [1, 2, 3, 4],
+      [1, 2, 3, 4],
+      [1, 2, 3, 4],
+      [1, 2, 3, 4]
+    ];
+
+    let MatrixTransformLib = new MatrixTransformApi();
+
+    let rotated = MatrixTransformLib.rotateCounterclockwise(m1);
 
     let i = 0, j = 0;
     for (i = 0; i < 4; i++) {
