@@ -2,7 +2,7 @@
   <div>
     <board/>
     <bag
-      :selection="selected"
+      :selection=selected
     />
     <select v-model="selected">
       <option disabled value="">Please select one:</option>
