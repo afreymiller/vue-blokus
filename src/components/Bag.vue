@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    {{ selection }}
+    <h1 class="col-md-2">{{ selection }}</h1>
     <polyomino
       :config="tile1" 
       class="col-md-2"
@@ -25,7 +25,7 @@ export default {
     Polyomino
   },
   props: {
-    selection: Number
+    selection: String
   },
   data () {
     return {
