@@ -11,9 +11,14 @@
       <option>3</option>
     </select>
     <button type="button"
-      v-on:click="rotate90()"
+      v-on:click="rotateClockwise()"
     >
-      Rotate tile 90 degrees
+      Rotate clockwise
+    </button>
+    <button type="button"
+      v-on:click="rotateCounterclockwise()"
+    >
+      Rotate counterclockwise
     </button>
   </div>
 </template>
@@ -77,8 +82,11 @@ export default {
       inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
       dec: 'game/decrement'
     }),
-    rotate90: function() {
+    rotateClockwise: function() {
       this.tileConfig = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
+    },
+    rotateCounterclockwise: function() {
+      this.tileConfig = matrixTransformApi.rotateClockwise(this.tileConfig);
     },
     calculatePosition: function(e) {
       let offset = $("canvas").offset();
