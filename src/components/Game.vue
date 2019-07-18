@@ -20,6 +20,13 @@
     >
       Rotate counterclockwise
     </button>
+    <button 
+      v-on:click="inc()"
+    >Inc</button>
+    <button
+      v-on:click="dec()"
+    >Dec</button>
+    {{count}}
   </div>
 </template>
 
