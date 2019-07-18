@@ -31,6 +31,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 var $ = require('jquery')
 window.jQuery = $
 import { mapState, mapMutations } from 'vuex'
@@ -50,28 +51,6 @@ export default {
       left: 0,
       top: 0,
       selected: 0,
-      gameConfig: [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-        [0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0],
-        [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      ],
       tileConfig: [
         [0, 0, 0, 0, 0],
         [0, 0, 1, 1, 0],
@@ -82,12 +61,14 @@ export default {
     }
 	},
   computed: mapState({
-    count: state => state.game.count
+    count: state => state.game.count,
+    boardConfig: state => state.game.boardConfig
   }),
   methods:{
     ...mapMutations({
       inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
-      dec: 'game/decrement'
+      dec: 'game/decrement',
+      addTile: 'game/addTile'
     }),
     rotateClockwise: function() {
       this.tileConfig = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
@@ -100,20 +81,22 @@ export default {
       this.left = e.pageX - offset.left;
       this.top = e.pageY - offset.top;
 
-      canvasApi.updateCanvas(this.tileConfig, this.gameConfig, this.left, this.top);
+      canvasApi.updateCanvas(this.tileConfig, this.boardConfig, this.left, this.top);
     },
     onClick: function() {
       /* TODO: This should take place entirely in apiCanvas and return a game state */
-      this.gameConfig = canvasApi.updateGameState(this.gameConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
+      this.boardConfig = canvasApi.updateGameState(this.boardConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
       // eslint-disable-next-line no-console
     }
   },
-  mounted() {
+  created() {
+    console.log(this.count);
+    console.log(this.boardConfig);
     // eslint-disable-next-line no-console
     window.addEventListener('mousemove', this.calculatePosition);
     window.addEventListener('mouseup', this.calculatePosition);
     window.addEventListener('click', this.onClick);
-    canvasApi.updateCanvas(this.tileConfig, this.gameConfig, 0, 0);
+    canvasApi.updateCanvas(this.tileConfig, this.boardConfig, 0, 0);
   }
 }
 </script>
