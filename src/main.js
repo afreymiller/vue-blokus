@@ -15,7 +15,6 @@ Vue.use(VueLodash);
 
 const gameModule = {
   state: {
-    count: 0,
     boardConfig: [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -40,8 +39,6 @@ const gameModule = {
     ]
   },
   mutations: {
-    increment: state => state.count++,
-    decrement: state => state.count--,
     updateBoardConfig: (state, payload) => state.boardConfig = payload
   },
   namespaced: true
