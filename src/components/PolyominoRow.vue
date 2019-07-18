@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="polyomino">
   <polyomino-cell
       v-for="(cell, index) in row"
       v-bind:key="index"
@@ -26,6 +26,9 @@ export default {
 </script>
 
 <style scoped>
+  .polyomino {
+    text-align: center;
+  }
   .polyomino-tile {
     border: 1px solid black;
   }
