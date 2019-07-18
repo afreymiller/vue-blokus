@@ -31,6 +31,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 var $ = require('jquery')
 window.jQuery = $
 import { mapState, mapMutations } from 'vuex'
@@ -49,71 +50,52 @@ export default {
     return {
       left: 0,
       top: 0,
-      selected: 0,
-      gameConfig: [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-        [0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0],
-        [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      ],
-      tileConfig: [
-        [0, 0, 0, 0, 0],
-        [0, 0, 1, 1, 0],
-        [0, 0, 1, 0, 0],
-        [0, 0, 1, 0, 0],
-        [0, 0, 0, 0, 0]
-      ]
+      selected: 0
     }
 	},
   computed: mapState({
-    count: state => state.game.count
+    count: state => state.game.count,
+    boardConfig: state => state.game.boardConfig,
+    tileConfig: state => state.playerOne.tiles[0].config
   }),
   methods:{
     ...mapMutations({
       inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
-      dec: 'game/decrement'
+      dec: 'game/decrement',
+      update: 'game/updateBoardConfig',
+      rotate: 'playerOne/updateRotation'
     }),
     rotateClockwise: function() {
-      this.tileConfig = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
+      let tmp = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
+      this.rotate({i: 0, newConfig: tmp});
     },
     rotateCounterclockwise: function() {
-      this.tileConfig = matrixTransformApi.rotateClockwise(this.tileConfig);
+      let tmp = matrixTransformApi.rotateClockwise(this.tileConfig);
+      this.rotate({i: 0, newConfig: tmp});
     },
     calculatePosition: function(e) {
       let offset = $("canvas").offset();
       this.left = e.pageX - offset.left;
       this.top = e.pageY - offset.top;
 
-      canvasApi.updateCanvas(this.tileConfig, this.gameConfig, this.left, this.top);
+      canvasApi.updateCanvas(this.tileConfig, this.boardConfig, this.left, this.top);
     },
     onClick: function() {
       /* TODO: This should take place entirely in apiCanvas and return a game state */
-      this.gameConfig = canvasApi.updateGameState(this.gameConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
+      let tmpConfig = canvasApi.updateGameState(this.boardConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
+      this.update(tmpConfig);
       // eslint-disable-next-line no-console
     }
   },
-  mounted() {
+  created() {
+    console.log(this.count);
+    console.log(this.boardConfig);
+    console.log(this.tileConfig);
     // eslint-disable-next-line no-console
     window.addEventListener('mousemove', this.calculatePosition);
     window.addEventListener('mouseup', this.calculatePosition);
     window.addEventListener('click', this.onClick);
-    canvasApi.updateCanvas(this.tileConfig, this.gameConfig, 0, 0);
+    canvasApi.updateCanvas(this.tileConfig, this.boardConfig, 0, 0);
   }
 }
 </script>
