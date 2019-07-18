@@ -42,7 +42,7 @@ const gameModule = {
   mutations: {
     increment: state => state.count++,
     decrement: state => state.count--,
-    addTile: state => state.boardConfig[0][0] = 1
+    updateBoardConfig: (state, payload) => state.boardConfig = payload
   },
   namespaced: true
 }

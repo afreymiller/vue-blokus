@@ -68,7 +68,7 @@ export default {
     ...mapMutations({
       inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
       dec: 'game/decrement',
-      addTile: 'game/addTile'
+      update: 'game/updateBoardConfig'
     }),
     rotateClockwise: function() {
       this.tileConfig = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
@@ -85,7 +85,8 @@ export default {
     },
     onClick: function() {
       /* TODO: This should take place entirely in apiCanvas and return a game state */
-      this.boardConfig = canvasApi.updateGameState(this.boardConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
+      let tmpConfig = canvasApi.updateGameState(this.boardConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
+      this.update(tmpConfig);
       // eslint-disable-next-line no-console
     }
   },
