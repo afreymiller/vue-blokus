@@ -47,9 +47,33 @@ const gameModule = {
   namespaced: true
 }
 
+const playerOneModule = {
+  state: {
+    score: 0,
+    tiles: [
+      {
+        selected: false,
+        used: false,
+        config: [
+          [0, 0, 0, 0, 0],
+          [0, 0, 1, 1, 0],
+          [0, 0, 1, 0, 0],
+          [0, 0, 1, 0, 0],
+          [0, 0, 0, 0, 0]
+        ]
+      }
+    ]
+  },
+  mutations: {
+    updateRotation: (state, {i, newConfig}) => state.tiles[i].config = newConfig
+  },
+  namespaced: true
+}
+
 const store = new Vuex.Store({
   modules: {
-    game: gameModule
+    game: gameModule,
+    playerOne: playerOneModule
   }
 })
 

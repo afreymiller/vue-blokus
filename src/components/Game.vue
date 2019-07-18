@@ -50,31 +50,28 @@ export default {
     return {
       left: 0,
       top: 0,
-      selected: 0,
-      tileConfig: [
-        [0, 0, 0, 0, 0],
-        [0, 0, 1, 1, 0],
-        [0, 0, 1, 0, 0],
-        [0, 0, 1, 0, 0],
-        [0, 0, 0, 0, 0]
-      ]
+      selected: 0
     }
 	},
   computed: mapState({
     count: state => state.game.count,
-    boardConfig: state => state.game.boardConfig
+    boardConfig: state => state.game.boardConfig,
+    tileConfig: state => state.playerOne.tiles[0].config
   }),
   methods:{
     ...mapMutations({
       inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
       dec: 'game/decrement',
-      update: 'game/updateBoardConfig'
+      update: 'game/updateBoardConfig',
+      rotate: 'playerOne/updateRotation'
     }),
     rotateClockwise: function() {
-      this.tileConfig = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
+      let tmp = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
+      this.rotate({i: 0, newConfig: tmp});
     },
     rotateCounterclockwise: function() {
-      this.tileConfig = matrixTransformApi.rotateClockwise(this.tileConfig);
+      let tmp = matrixTransformApi.rotateClockwise(this.tileConfig);
+      this.rotate({i: 0, newConfig: tmp});
     },
     calculatePosition: function(e) {
       let offset = $("canvas").offset();
@@ -93,6 +90,7 @@ export default {
   created() {
     console.log(this.count);
     console.log(this.boardConfig);
+    console.log(this.tileConfig);
     // eslint-disable-next-line no-console
     window.addEventListener('mousemove', this.calculatePosition);
     window.addEventListener('mouseup', this.calculatePosition);
