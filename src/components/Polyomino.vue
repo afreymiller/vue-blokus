@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <polyomino-row
+      class="inner"
       v-for="(row, index) in config"
       v-bind:key="index"
       :row="row"
@@ -27,12 +28,13 @@ export default {
 
 <style scoped>
   .wrapper {
-    max-height: 30px;
-        display: grid;
-        grid-template-columns: 10px 10px 10px 10px 10px;
-        grid-gap: 0px;
-        background-color: #fff;
-        color: #444;
-        margin-bottom: 60px;
+    max-height: 50px;
+    display: grid;
+    grid-template-columns: 10px 10px 10px 10px 10px;
+    grid-gap: 0px;
+    background-color: #fff;
+    color: #444;
+    margin-bottom: 60px;
+    border: 1px solid orange;
   }
 </style>
