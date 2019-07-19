@@ -49,7 +49,7 @@ export default {
   computed: mapState({
     count: state => state.game.count,
     boardConfig: state => state.game.boardConfig,
-    tileConfig: state => state.playerOne.tiles[0].config
+    tileConfig: state => state.playerOne.tiles.filter(e => e.selected === true)[0].config
   }),
   methods:{
     ...mapMutations({

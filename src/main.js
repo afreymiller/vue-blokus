@@ -49,7 +49,8 @@ const playerOneModule = {
     score: 0,
     tiles: [
       {
-        selected: false,
+        id: 1,
+        selected: true,
         used: false,
         config: [
           [0, 0, 0, 0, 0],
