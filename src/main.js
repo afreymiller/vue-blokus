@@ -49,7 +49,7 @@ const playerOneModule = {
     score: 0,
     tiles: [
       {
-        id: 1,
+        id: 0,
         selected: true,
         used: false,
         config: [
@@ -59,11 +59,29 @@ const playerOneModule = {
           [0, 0, 1, 0, 0],
           [0, 0, 0, 0, 0]
         ]
+      },
+      {
+        id: 1,
+        selected: false,
+        used: false,
+        config: [
+          [0, 0, 0, 0, 0],
+          [0, 1, 0, 1, 0],
+          [0, 1, 1, 1, 0],
+          [0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0]
+        ]
       }
     ]
   },
   mutations: {
-    updateRotation: (state, {i, newConfig}) => state.tiles[i].config = newConfig
+    updateRotation: (state, {i, newConfig}) => state.tiles[i].config = newConfig,
+    placeTile: (state, {i}) => {
+      state.tiles[i].selected = false;
+      state.tiles[i].used = true;
+      /* Get rid of the following line */
+      state.tiles[1].selected = true;
+    }
   },
   namespaced: true
 }
