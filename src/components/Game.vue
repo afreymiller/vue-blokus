@@ -56,7 +56,8 @@ export default {
       inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
       dec: 'game/decrement',
       update: 'game/updateBoardConfig',
-      rotate: 'playerOne/updateRotation'
+      rotate: 'playerOne/updateRotation',
+      placeTile: 'playerOne/placeTile'
     }),
     rotateClockwise: function() {
       let tmp = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
@@ -77,6 +78,7 @@ export default {
       /* TODO: This should take place entirely in apiCanvas and return a game state */
       let tmpConfig = canvasApi.updateGameState(this.boardConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
       this.update(tmpConfig);
+      this.placeTile({i: 0});
       // eslint-disable-next-line no-console
     }
   },
