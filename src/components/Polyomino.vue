@@ -1,5 +1,8 @@
 <template>
-  <div class="wrapper">
+  <div 
+    class="wrapper"
+    v-bind:class="{ selected: isSelected }"
+  >
     <polyomino-row
       class="inner"
       v-for="(row, index) in config"
@@ -21,6 +24,10 @@ export default {
     config: {
       type: Array,
       default: () => []
+    },
+    isSelected: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -35,6 +42,9 @@ export default {
     background-color: #fff;
     color: #444;
     margin-bottom: 60px;
+  }
+
+  .selected {
     border: 1px solid orange;
   }
 </style>

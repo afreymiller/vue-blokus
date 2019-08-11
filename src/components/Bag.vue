@@ -2,15 +2,18 @@
   <div class="row">
     <h1 class="col-md-2">{{ selection }}</h1>
     <polyomino
-      :config="tile1" 
+      :config="tile1"
+      :isSelected=false
       class="col-md-2"
     />
     <polyomino
       :config="tile2"
+      :isSelected=true
       class="col-md-2" 
     />
     <polyomino
       :config="tile3"
+      :isSelected=false
       class="col-md-2"
     />
   </div>
