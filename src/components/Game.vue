@@ -4,7 +4,15 @@
     <!-- <bag
       :selection=tileId
     /> -->
-    <input v-model="message">
+    <select v-model="tileId">
+      <option disabled value="">Please select one</option>
+      <option
+        v-for="subset in this.$store.state.playerOne.subsets"
+        v-bind:key="subset.id"
+      >
+        {{subset.val}}
+      </option>
+    </select>
     <!-- <select v-model="selected">
       <option disabled value="">Please select one:</option>
       <option>1</option>
@@ -33,19 +41,20 @@ import { mapState, mapMutations } from 'vuex'
 import canvasApi from '../helpers/canvasApi.js'
 import matrixTransformApi from '../helpers/matrixTransformApi.js'
 import Board from './Board.vue'
-import Bag from './Bag.vue'
+//import Bag from './Bag.vue'
 
 export default {
   name: 'Game',
   components: {
-    Board,
-    Bag
-  },
+    Board
+    // Board,
+    // Bag
+  }, // selected should be mapped from the state
   data () {
     return {
       left: 0,
       top: 0,
-      selected: 0
+      selected: 3
     }
 	},
   computed: {
@@ -77,6 +86,9 @@ export default {
     rotateClockwise: function() {
       let tmp = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
       this.rotate({i: 0, newConfig: tmp});
+    },
+    changeSubset(value) {
+      this.$store.dispatch('playerOne/setSubset', value);
     },
     rotateCounterclockwise: function() {
       let tmp = matrixTransformApi.rotateClockwise(this.tileConfig);

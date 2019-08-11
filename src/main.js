@@ -50,7 +50,7 @@ const playerOneModule = {
     tiles: [
       {
         id: 0,
-        selected: true,
+        selected: false,
         used: false,
         config: [
           [0, 0, 0, 0, 0],
@@ -62,7 +62,7 @@ const playerOneModule = {
       },
       {
         id: 1,
-        selected: false,
+        selected: true,
         used: false,
         config: [
           [0, 0, 0, 0, 0],
@@ -85,7 +85,13 @@ const playerOneModule = {
         ]
       }
     ],
-    message: "Hello"
+    message: "Hello",
+    subsets: [
+      {id: 1, val: 1},
+      {id: 2, val: 2},
+      {id: 3, val: 3},
+      {id: 4, val: 4}
+    ]
   },
   mutations: {
     updateRotation: (state, {i, newConfig}) => state.tiles[i].config = newConfig,
@@ -107,8 +113,11 @@ const playerOneModule = {
         i++;
       }
     },
-    updateMessage (state, message) {
+    updateMessage: (state, message) => {
       state.message = message
+    },
+    setSubset: (state, obj) => {
+      
     }
   },
   namespaced: true
