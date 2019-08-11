@@ -13,12 +13,6 @@
         {{subset.val}}
       </option>
     </select>
-    <!-- <select v-model="selected">
-      <option disabled value="">Please select one:</option>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-    </select> -->
     <button type="button"
       v-on:click="rotateClockwise()"
     >
@@ -63,16 +57,7 @@ export default {
       boardConfig: state => state.game.boardConfig,
       tileConfig: state => state.playerOne.tiles.filter(e => e.selected === true)[0].config,
       tileId: state => state.playerOne.tiles.filter(e => e.selected === true)[0].id
-    }),
-    message: {
-      get () {
-        return this.$store.state.playerOne.message
-      },
-      set (value) {
-        console.log(this.$store);
-        this.$store.commit('playerOne/updateMessage', value)
-      }
-    }
+    })
   },
   methods:{
     ...mapMutations({
