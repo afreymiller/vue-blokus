@@ -1,7 +1,7 @@
 <template>
   <div>
     <board/>
-    <bag
+    <!-- <bag
       :selection=selected
     />
     <select v-model="selected">
@@ -9,7 +9,7 @@
       <option>1</option>
       <option>2</option>
       <option>3</option>
-    </select>
+    </select> -->
     <button type="button"
       v-on:click="rotateClockwise()"
     >
@@ -20,6 +20,7 @@
     >
       Rotate counterclockwise
     </button>
+    {{top}} {{left}}
   </div>
 </template>
 
@@ -49,7 +50,8 @@ export default {
   computed: mapState({
     count: state => state.game.count,
     boardConfig: state => state.game.boardConfig,
-    tileConfig: state => state.playerOne.tiles.filter(e => e.selected === true)[0].config
+    tileConfig: state => state.playerOne.tiles.filter(e => e.selected === true)[0].config,
+    tileId: state => state.playerOne.tiles.filter(e => e.selected === true)[0].id
   }),
   methods:{
     ...mapMutations({
@@ -57,7 +59,8 @@ export default {
       dec: 'game/decrement',
       update: 'game/updateBoardConfig',
       rotate: 'playerOne/updateRotation',
-      placeTile: 'playerOne/placeTile'
+      placeTile: 'playerOne/placeTile',
+      setSelected: 'playerOne/setSelected'
     }),
     rotateClockwise: function() {
       let tmp = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
@@ -75,11 +78,16 @@ export default {
       canvasApi.updateCanvas(this.tileConfig, this.boardConfig, this.left, this.top);
     },
     onClick: function() {
-      /* TODO: This should take place entirely in apiCanvas and return a game state */
-      let tmpConfig = canvasApi.updateGameState(this.boardConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
-      this.update(tmpConfig);
-      this.placeTile({i: 0});
-      // eslint-disable-next-line no-console
+      if (this.left >= 0 && this.left <= 400 && this.top >= 0 && this.top <= 400) {
+        /* TODO: This should take place entirely in apiCanvas and return a game state */
+        let tmpConfig = canvasApi.updateGameState(this.boardConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
+        this.update(tmpConfig);
+        console.log(this.tileId);
+        this.placeTile({i: this.tileId});
+        this.setSelected();
+        // eslint-disable-next-line no-console
+      }
+      
     }
   },
   created() {
