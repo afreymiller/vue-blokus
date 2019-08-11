@@ -2,9 +2,10 @@
   <div>
     <board/>
     <!-- <bag
-      :selection=selected
-    />
-    <select v-model="selected">
+      :selection=tileId
+    /> -->
+    <input v-model="message">
+    <!-- <select v-model="selected">
       <option disabled value="">Please select one:</option>
       <option>1</option>
       <option>2</option>
@@ -47,12 +48,23 @@ export default {
       selected: 0
     }
 	},
-  computed: mapState({
-    count: state => state.game.count,
-    boardConfig: state => state.game.boardConfig,
-    tileConfig: state => state.playerOne.tiles.filter(e => e.selected === true)[0].config,
-    tileId: state => state.playerOne.tiles.filter(e => e.selected === true)[0].id
-  }),
+  computed: {
+    ...mapState({
+      count: state => state.game.count,
+      boardConfig: state => state.game.boardConfig,
+      tileConfig: state => state.playerOne.tiles.filter(e => e.selected === true)[0].config,
+      tileId: state => state.playerOne.tiles.filter(e => e.selected === true)[0].id
+    }),
+    message: {
+      get () {
+        return this.$store.state.playerOne.message
+      },
+      set (value) {
+        console.log(this.$store);
+        this.$store.commit('playerOne/updateMessage', value)
+      }
+    }
+  },
   methods:{
     ...mapMutations({
       inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`

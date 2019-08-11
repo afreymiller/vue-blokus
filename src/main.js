@@ -84,7 +84,8 @@ const playerOneModule = {
           [0, 0, 0, 0, 0]
         ]
       }
-    ]
+    ],
+    message: "Hello"
   },
   mutations: {
     updateRotation: (state, {i, newConfig}) => state.tiles[i].config = newConfig,
@@ -105,6 +106,9 @@ const playerOneModule = {
 
         i++;
       }
+    },
+    updateMessage (state, message) {
+      state.message = message
     }
   },
   namespaced: true
