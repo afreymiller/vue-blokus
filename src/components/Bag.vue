@@ -25,7 +25,7 @@ export default {
     Polyomino
   },
   props: {
-    selection: String
+    selection: Number
   },
   data () {
     return {
