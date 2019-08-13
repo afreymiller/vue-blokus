@@ -14,7 +14,7 @@
 
 <script>
 import PolyominoRow from './PolyominoRow.vue'
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   name: 'Polyomino',
@@ -26,14 +26,17 @@ export default {
       type: Array,
       default: () => []
     },
-    isSelected: {
-      type: Boolean,
-      default: false
-    },
     tileId: {
       type: Number,
       default: -1
     }
+  },
+  computed: {
+    ...mapState({
+      isSelected: function(state) {
+        return state.playerOne.tiles.filter(e => e.id === this.tileId)[0].selected;
+      }
+    })
   },
   methods: {
     ...mapMutations({
@@ -42,7 +45,7 @@ export default {
     onClick: function() {
       // eslint-disable-next-line no-console
       console.log("on click called in " + this.tileId);
-      //this.setSelected();
+      this.setSelected({i: this.tileId});
         // eslint-disable-next-line no-console
     },
     getClass: function() {
@@ -58,6 +61,8 @@ export default {
     }
   },
   mounted() {
+    // eslint-disable-next-line no-console
+    console.log(this.tileId);
     var classname = document.getElementsByClassName('polyomino-' + this.tileId.toString());
 
     classname[0].addEventListener('click', this.onClick);

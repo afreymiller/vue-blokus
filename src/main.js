@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App.vue'
@@ -92,8 +93,17 @@ const playerOneModule = {
       next selected piece */
       //state.tiles[1].selected = true;
     },
-    setSelected: (state) => {
-      state.tiles[0].selected = true;
+    setSelected: (state, {i}) => {
+      console.log("in setSelected");
+      let index = 0;
+
+      for (index = 0; index < state.tiles.length; index++) {
+        if (state.tiles[index].id === i) {
+          state.tiles[index].selected = true;
+        } else {
+          state.tiles[index].selected = false;
+        }
+      }
     }
   },
   namespaced: true

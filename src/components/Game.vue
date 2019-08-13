@@ -62,9 +62,6 @@ export default {
       let tmp = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
       this.rotate({i: 0, newConfig: tmp});
     },
-    changeSubset(value) {
-      this.$store.dispatch('playerOne/setSubset', value);
-    },
     rotateCounterclockwise: function() {
       let tmp = matrixTransformApi.rotateClockwise(this.tileConfig);
       this.rotate({i: 0, newConfig: tmp});
