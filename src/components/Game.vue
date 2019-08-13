@@ -84,7 +84,7 @@ export default {
         console.log(this.tileId);
         this.placeTile({i: this.tileId});
         this.setSelected({i: null});
-        this.updateScore({i: this.tileConfig});
+        this.updateScore({config: this.tileConfig});
         // eslint-disable-next-line no-console
       }
       

@@ -93,13 +93,13 @@ const playerOneModule = {
       next selected piece */
       //state.tiles[1].selected = true;
     },
-    updateScore: (state, {i}) => {
+    updateScore: (state, {config}) => {
       let total = 0;
-      let index, j = 0;
+      let i, j = 0;
 
-      for (index = 0; index < 5; index++) {
+      for (i = 0; i < 5; i++) {
         for (j = 0; j < 5; j++) {
-          if (i[index][j] !== 0) {
+          if (config[i][j] !== 0) {
             total += 1;
           }
         }
