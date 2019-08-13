@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App.vue'
@@ -51,7 +52,6 @@ const playerOneModule = {
       {
         id: 0,
         selected: true,
-        used: false,
         config: [
           [0, 0, 0, 0, 0],
           [0, 0, 1, 1, 0],
@@ -63,12 +63,22 @@ const playerOneModule = {
       {
         id: 1,
         selected: false,
-        used: false,
         config: [
           [0, 0, 0, 0, 0],
           [0, 1, 0, 1, 0],
           [0, 1, 1, 1, 0],
           [0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0]
+        ]
+      },
+      {
+        id: 2,
+        selected: false,
+        config: [
+          [0, 0, 0, 0, 0],
+          [0, 1, 0, 0, 0],
+          [0, 1, 1, 1, 0],
+          [0, 0, 0, 1, 0],
           [0, 0, 0, 0, 0]
         ]
       }
@@ -77,10 +87,23 @@ const playerOneModule = {
   mutations: {
     updateRotation: (state, {i, newConfig}) => state.tiles[i].config = newConfig,
     placeTile: (state, {i}) => {
-      state.tiles[i].selected = false;
-      state.tiles[i].used = true;
-      /* Get rid of the following line */
-      state.tiles[1].selected = true;
+      let index = state.tiles.findIndex(e => e.id === i)
+      state.tiles.splice(index, 1);
+      /* There should be a separate mutation for designating the 
+      next selected piece */
+      //state.tiles[1].selected = true;
+    },
+    setSelected: (state, {i}) => {
+      console.log("in setSelected");
+      let index = 0;
+
+      for (index = 0; index < state.tiles.length; index++) {
+        if (state.tiles[index].id === i) {
+          state.tiles[index].selected = true;
+        } else {
+          state.tiles[index].selected = false;
+        }
+      }
     }
   },
   namespaced: true
