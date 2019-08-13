@@ -80,7 +80,7 @@ export default {
         this.update(tmpConfig);
         console.log(this.tileId);
         this.placeTile({i: this.tileId});
-        this.setSelected();
+        this.setSelected({i: null});
         // eslint-disable-next-line no-console
       }
       
