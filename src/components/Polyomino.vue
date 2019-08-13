@@ -1,7 +1,7 @@
 <template>
   <div 
     class="wrapper"
-    v-bind:class="{ selected: isSelected }"
+    v-bind:class="getClass()"
   >
     <polyomino-row
       class="inner"
@@ -14,6 +14,7 @@
 
 <script>
 import PolyominoRow from './PolyominoRow.vue'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'Polyomino',
@@ -28,7 +29,36 @@ export default {
     isSelected: {
       type: Boolean,
       default: false
+    },
+    tileId: {
+      type: Number,
+      default: -1
     }
+  },
+  methods: {
+    ...mapMutations({
+      setSelected: 'playerOne/setSelected'
+    }),
+    onClick: function() {
+      // eslint-disable-next-line no-console
+      console.log("on click called in " + this.tileId);
+      //this.setSelected();
+        // eslint-disable-next-line no-console
+    },
+    getClass: function() {
+      let classString = '';
+
+      if (this.isSelected) {
+        classString += 'selected';
+      }
+
+      classString += ' polyomino-' + this.tileId.toString();
+
+      return classString;
+    }
+  },
+  created() {
+    window.addEventListener('click', this.onClick);
   }
 }
 </script>

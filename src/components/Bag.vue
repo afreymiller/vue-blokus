@@ -5,6 +5,7 @@
       v-bind:key="index"
       :config="polyomino.config"
       :isSelected="polyomino.id == selection"
+      :tileId="polyomino.id"
       class="col-md-1"
     />
   </div>
