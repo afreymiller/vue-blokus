@@ -1,5 +1,8 @@
 <template>
-  <div class="wrapper">
+  <div 
+    class="wrapper"
+    v-bind:class="getClass()"
+  >
     <polyomino-row
       class="inner"
       v-for="(row, index) in config"
@@ -11,6 +14,7 @@
 
 <script>
 import PolyominoRow from './PolyominoRow.vue'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   name: 'Polyomino',
@@ -21,7 +25,48 @@ export default {
     config: {
       type: Array,
       default: () => []
+    },
+    tileId: {
+      type: Number,
+      default: -1
     }
+  },
+  computed: {
+    ...mapState({
+      isSelected: function(state) {
+        return state.playerOne.tiles.filter(e => e.id === this.tileId)[0].selected;
+      }
+    })
+  },
+  methods: {
+    ...mapMutations({
+      setSelected: 'playerOne/setSelected'
+    }),
+    onClick: function() {
+      // eslint-disable-next-line no-console
+      console.log("on click called in " + this.tileId);
+      this.setSelected({i: this.tileId});
+        // eslint-disable-next-line no-console
+    },
+    getClass: function() {
+      let classString = '';
+
+      if (this.isSelected) {
+        classString += 'selected';
+      }
+
+      classString += ' polyomino-' + this.tileId.toString();
+
+      return classString;
+    }
+  },
+  mounted() {
+    // eslint-disable-next-line no-console
+    console.log(this.tileId);
+    var classname = document.getElementsByClassName('polyomino-' + this.tileId.toString());
+
+    classname[0].addEventListener('click', this.onClick);
+    
   }
 }
 </script>
@@ -35,6 +80,9 @@ export default {
     background-color: #fff;
     color: #444;
     margin-bottom: 60px;
+  }
+
+  .selected {
     border: 1px solid orange;
   }
 </style>

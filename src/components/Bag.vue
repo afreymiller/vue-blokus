@@ -1,23 +1,18 @@
 <template>
   <div class="row">
-    <h1 class="col-md-2">{{ selection }}</h1>
     <polyomino
-      :config="tile1" 
-      class="col-md-2"
-    />
-    <polyomino
-      :config="tile2"
-      class="col-md-2" 
-    />
-    <polyomino
-      :config="tile3"
-      class="col-md-2"
+      v-for="(polyomino, index) in tiles"
+      v-bind:key="index"
+      :config="polyomino.config"
+      :tileId="polyomino.id"
+      class="col-md-1"
     />
   </div>
 </template>
 
 <script>
 import Polyomino from './Polyomino.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Bag',
@@ -25,32 +20,12 @@ export default {
     Polyomino
   },
   props: {
-    selection: String
+    selection: Number
   },
-  data () {
-    return {
-      tile1: [
-        [0, 0, 0, 0, 0],
-        [0, 1, 0, 1, 0],
-        [0, 1, 1, 1, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0]
-      ],
-      tile2: [
-        [0, 0, 0, 0, 0],
-        [0, 0, 1, 0, 0],
-        [0, 0, 1, 1, 0],
-        [0, 0, 1, 1, 0],
-        [0, 0, 0, 0, 0]
-      ],
-      tile3: [
-        [0, 0, 0, 0, 0],
-        [0, 0, 1, 0, 0],
-        [0, 1, 1, 1, 0],
-        [0, 0, 1, 0, 0],
-        [0, 0, 0, 0, 0]
-      ]
-    }
+  computed: {
+    ...mapState({
+      tiles: state => state.playerOne.tiles
+    })
   }
 }
 </script>
