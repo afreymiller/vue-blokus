@@ -57,8 +57,11 @@ export default {
       return classString;
     }
   },
-  created() {
-    window.addEventListener('click', this.onClick);
+  mounted() {
+    var classname = document.getElementsByClassName('polyomino-' + this.tileId.toString());
+
+    classname[0].addEventListener('click', this.onClick);
+    
   }
 }
 </script>
