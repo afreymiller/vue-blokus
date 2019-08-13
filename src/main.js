@@ -51,7 +51,6 @@ const playerOneModule = {
       {
         id: 0,
         selected: true,
-        used: false,
         config: [
           [0, 0, 0, 0, 0],
           [0, 0, 1, 1, 0],
@@ -63,7 +62,6 @@ const playerOneModule = {
       {
         id: 1,
         selected: false,
-        used: false,
         config: [
           [0, 0, 0, 0, 0],
           [0, 1, 0, 1, 0],
@@ -75,7 +73,6 @@ const playerOneModule = {
       {
         id: 2,
         selected: false,
-        used: false,
         config: [
           [0, 0, 0, 0, 0],
           [0, 1, 0, 0, 0],
@@ -89,22 +86,14 @@ const playerOneModule = {
   mutations: {
     updateRotation: (state, {i, newConfig}) => state.tiles[i].config = newConfig,
     placeTile: (state, {i}) => {
-      state.tiles[i].selected = false;
-      state.tiles[i].used = true;
+      let index = state.tiles.findIndex(e => e.id === i)
+      state.tiles.splice(index, 1);
       /* There should be a separate mutation for designating the 
       next selected piece */
       //state.tiles[1].selected = true;
     },
     setSelected: (state) => {
-      let i = 0;
-      while(i < 20) {
-        if (state.tiles[i].selected === false && state.tiles[i].used === false) {
-          state.tiles[i].selected = true;
-          break;
-        }
-
-        i++;
-      }
+      state.tiles[0].selected = true;
     }
   },
   namespaced: true
