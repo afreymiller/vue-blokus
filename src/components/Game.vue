@@ -14,6 +14,7 @@
     >
       Rotate counterclockwise
     </button>
+    <p>Score: {{score}}</p>
     {{top}} {{left}}
   </div>
 </template>
@@ -46,7 +47,8 @@ export default {
       count: state => state.game.count,
       boardConfig: state => state.game.boardConfig,
       tileConfig: state => state.playerOne.tiles.filter(e => e.selected === true)[0].config,
-      tileId: state => state.playerOne.tiles.filter(e => e.selected === true)[0].id
+      tileId: state => state.playerOne.tiles.filter(e => e.selected === true)[0].id,
+      score: state => state.playerOne.score
     })
   },
   methods:{
@@ -56,7 +58,8 @@ export default {
       update: 'game/updateBoardConfig',
       rotate: 'playerOne/updateRotation',
       placeTile: 'playerOne/placeTile',
-      setSelected: 'playerOne/setSelected'
+      setSelected: 'playerOne/setSelected',
+      updateScore: 'playerOne/updateScore'
     }),
     rotateClockwise: function() {
       let tmp = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
@@ -81,6 +84,7 @@ export default {
         console.log(this.tileId);
         this.placeTile({i: this.tileId});
         this.setSelected({i: null});
+        this.updateScore({i: this.tileConfig});
         // eslint-disable-next-line no-console
       }
       

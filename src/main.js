@@ -93,6 +93,20 @@ const playerOneModule = {
       next selected piece */
       //state.tiles[1].selected = true;
     },
+    updateScore: (state, {i}) => {
+      let total = 0;
+      let index, j = 0;
+
+      for (index = 0; index < 5; index++) {
+        for (j = 0; j < 5; j++) {
+          if (i[index][j] !== 0) {
+            total += 1;
+          }
+        }
+      }
+
+      state.score += total;
+    },
     setSelected: (state, {i}) => {
       console.log("in setSelected");
       if (i !==  null) {
