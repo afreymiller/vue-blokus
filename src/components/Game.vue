@@ -34,7 +34,7 @@ export default {
   components: {
     Board,
     Bag
-  }, // selected should be mapped from the state
+  },
   data () {
     return {
       left: 0,
@@ -53,7 +53,7 @@ export default {
   },
   methods:{
     ...mapMutations({
-      inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
+      inc: 'game/increment',
       dec: 'game/decrement',
       update: 'game/updateBoardConfig',
       rotate: 'playerOne/updateRotation',
