@@ -81,20 +81,14 @@ export default {
         /* TODO: This should take place entirely in apiCanvas and return a game state */
         let tmpConfig = canvasApi.updateGameState(this.boardConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
         this.update(tmpConfig);
-        console.log(this.tileId);
         this.placeTile({i: this.tileId});
         this.setSelected({i: null});
         this.updateScore({config: this.tileConfig});
-        // eslint-disable-next-line no-console
       }
       
     }
   },
   created() {
-    console.log(this.count);
-    console.log(this.boardConfig);
-    console.log(this.tileConfig);
-    // eslint-disable-next-line no-console
     window.addEventListener('mousemove', this.calculatePosition);
     window.addEventListener('mouseup', this.calculatePosition);
     window.addEventListener('click', this.onClick);

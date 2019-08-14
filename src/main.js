@@ -89,9 +89,6 @@ const playerOneModule = {
     placeTile: (state, {i}) => {
       let index = state.tiles.findIndex(e => e.id === i)
       state.tiles.splice(index, 1);
-      /* There should be a separate mutation for designating the 
-      next selected piece */
-      //state.tiles[1].selected = true;
     },
     updateScore: (state, {config}) => {
       let total = 0;
@@ -108,7 +105,6 @@ const playerOneModule = {
       state.score += total;
     },
     setSelected: (state, {i}) => {
-      console.log("in setSelected");
       if (i !==  null) {
         let index = 0;
 
