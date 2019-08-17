@@ -63,11 +63,11 @@ export default {
     }),
     rotateClockwise: function() {
       let tmp = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
-      this.rotate({i: 0, newConfig: tmp});
+      this.rotate({i: this.tileId, newConfig: tmp});
     },
     rotateCounterclockwise: function() {
       let tmp = matrixTransformApi.rotateClockwise(this.tileConfig);
-      this.rotate({i: 0, newConfig: tmp});
+      this.rotate({i: this.tileId, newConfig: tmp});
     },
     calculatePosition: function(e) {
       let offset = $("canvas").offset();

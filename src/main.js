@@ -85,7 +85,11 @@ const playerOneModule = {
     ]
   },
   mutations: {
-    updateRotation: (state, {i, newConfig}) => state.tiles[i].config = newConfig,
+    updateRotation: (state, {i, newConfig}) => {
+      console.log("updating rotation: ");
+      console.log("newConfig: ", newConfig);
+      state.tiles[i].config = newConfig;
+    },
     placeTile: (state, {i}) => {
       let index = state.tiles.findIndex(e => e.id === i)
       state.tiles.splice(index, 1);
