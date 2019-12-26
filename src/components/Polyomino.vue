@@ -43,10 +43,7 @@ export default {
       setSelected: 'playerOne/setSelected'
     }),
     onClick: function() {
-      // eslint-disable-next-line no-console
-      console.log("on click called in " + this.tileId);
       this.setSelected({i: this.tileId});
-        // eslint-disable-next-line no-console
     },
     getClass: function() {
       let classString = '';
@@ -61,8 +58,6 @@ export default {
     }
   },
   mounted() {
-    // eslint-disable-next-line no-console
-    console.log(this.tileId);
     var classname = document.getElementsByClassName('polyomino-' + this.tileId.toString());
 
     classname[0].addEventListener('click', this.onClick);

@@ -182,6 +182,10 @@ const canvasApi = {
     if (isValidMove) {
       const coords = getTileCoordsToRender(tileConfig, xOffset, yOffset);
       renderPolyominoTiles(coords, ctx);
+    } else {
+      ctx.fillStyle = '#CCE7FF';
+      const coords = getTileCoordsToRender(tileConfig, xOffset, yOffset);
+      renderPolyominoTiles(coords, ctx);
     }
   }
 }
