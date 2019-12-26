@@ -78,14 +78,16 @@ export default {
     },
     onClick: function() {
       if (this.left >= 0 && this.left <= 400 && this.top >= 0 && this.top <= 400) {
-        /* TODO: This should take place entirely in apiCanvas and return a game state */
-        let tmpConfig = canvasApi.updateGameState(this.boardConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
-        this.update(tmpConfig);
-        this.placeTile({i: this.tileId});
-        this.setSelected({i: null});
-        this.updateScore({config: this.tileConfig});
+
+        if (canvasApi.isValid(this.boardConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top))) {
+          /* TODO: This should take place entirely in apiCanvas and return a game state */
+          let tmpConfig = canvasApi.updateGameState(this.boardConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
+          this.update(tmpConfig);
+          this.placeTile({i: this.tileId});
+          this.setSelected({i: null});
+          this.updateScore({config: this.tileConfig});
+        } 
       }
-      
     }
   },
   created() {
