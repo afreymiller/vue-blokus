@@ -14,6 +14,7 @@
     >
       Rotate counterclockwise
     </button>
+    <p>Score: {{score}}</p>
     {{top}} {{left}}
   </div>
 </template>
@@ -33,7 +34,7 @@ export default {
   components: {
     Board,
     Bag
-  }, // selected should be mapped from the state
+  },
   data () {
     return {
       left: 0,
@@ -46,25 +47,27 @@ export default {
       count: state => state.game.count,
       boardConfig: state => state.game.boardConfig,
       tileConfig: state => state.playerOne.tiles.filter(e => e.selected === true)[0].config,
-      tileId: state => state.playerOne.tiles.filter(e => e.selected === true)[0].id
+      tileId: state => state.playerOne.tiles.filter(e => e.selected === true)[0].id,
+      score: state => state.playerOne.score
     })
   },
   methods:{
     ...mapMutations({
-      inc: 'game/increment', // map `this.add()` to `this.$store.commit('increment')`
+      inc: 'game/increment',
       dec: 'game/decrement',
       update: 'game/updateBoardConfig',
       rotate: 'playerOne/updateRotation',
       placeTile: 'playerOne/placeTile',
-      setSelected: 'playerOne/setSelected'
+      setSelected: 'playerOne/setSelected',
+      updateScore: 'playerOne/updateScore'
     }),
     rotateClockwise: function() {
       let tmp = matrixTransformApi.rotateCounterclockwise(this.tileConfig);
-      this.rotate({i: 0, newConfig: tmp});
+      this.rotate({i: this.tileId, newConfig: tmp});
     },
     rotateCounterclockwise: function() {
       let tmp = matrixTransformApi.rotateClockwise(this.tileConfig);
-      this.rotate({i: 0, newConfig: tmp});
+      this.rotate({i: this.tileId, newConfig: tmp});
     },
     calculatePosition: function(e) {
       let offset = $("canvas").offset();
@@ -78,19 +81,14 @@ export default {
         /* TODO: This should take place entirely in apiCanvas and return a game state */
         let tmpConfig = canvasApi.updateGameState(this.boardConfig, this.tileConfig, canvasApi.getCoords(this.left), canvasApi.getCoords(this.top));
         this.update(tmpConfig);
-        console.log(this.tileId);
         this.placeTile({i: this.tileId});
-        this.setSelected();
-        // eslint-disable-next-line no-console
+        this.setSelected({i: null});
+        this.updateScore({config: this.tileConfig});
       }
       
     }
   },
   created() {
-    console.log(this.count);
-    console.log(this.boardConfig);
-    console.log(this.tileConfig);
-    // eslint-disable-next-line no-console
     window.addEventListener('mousemove', this.calculatePosition);
     window.addEventListener('mouseup', this.calculatePosition);
     window.addEventListener('click', this.onClick);
