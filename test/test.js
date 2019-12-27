@@ -30,14 +30,14 @@ describe('CanvasApi', function() {
     });
 
     /* TODO: Double check this test case */
-    it('should return 0 when offset is -19', () => {
-      it('should return 20 when offset is 400', () => {
-        let canvasApi = new CanvasApi();
-        let coord = canvasApi.getCoord(-19);
+    // it('should return 0 when offset is -19', () => {
+    //   //it('should return 20 when offset is 400', () => {
+    //     let canvasApi = new CanvasApi();
+    //     let coord = canvasApi.getCoord(-19);
   
-        assert.equal(coord, 0);
-      });
-    })
+    //     assert.equal(coord, 0);
+    //   //});
+    // })
   })
 
   describe('isValidMove()', function() {
