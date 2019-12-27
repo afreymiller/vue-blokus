@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test": "nyc --reporter=text mocha"
+    "test": "nyc --reporter=text mocha",
+    "test-jest": "jest"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
@@ -25,9 +26,12 @@
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-plugin-eslint": "^3.2.1",
     "@vue/cli-service": "^3.2.0",
+    "@vue/test-utils": "^1.0.0-beta.30",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
+    "jest": "^24.9.0",
+    "vue-jest": "^3.0.5",
     "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {
@@ -42,6 +46,16 @@
     "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
+    }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest"
     }
   },
   "postcss": {
